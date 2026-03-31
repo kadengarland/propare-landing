@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Propare</title>
+  <meta name="description" content="Propare Privacy Policy - Learn how we collect, use, and protect your data on the Propare coaching platform.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-base: #060608;
+      --color-surface: #0A0A0F;
+      --color-surface-elevated: #0F0F14;
+      --color-accent: #A4DE02;
+      --color-accent-dim: rgba(164, 222, 2, 0.15);
+      --color-text: #FFFFFF;
+      --color-text-muted: rgba(255, 255, 255, 0.7);
+      --color-text-subtle: rgba(255, 255, 255, 0.5);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: 150ms var(--ease-out);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-base);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .back-link:hover {
+      color: var(--color-accent);
+      opacity: 1;
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-text);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo span {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Main Content */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 48px);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .page-meta {
+      font-size: 14px;
+      color: var(--color-text-subtle);
+    }
+
+    /* Legal Content */
+    .legal-content {
+      color: var(--color-text-muted);
+    }
+
+    .legal-content h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .legal-content h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .legal-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .legal-content p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .legal-content ul {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .legal-content li {
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .legal-content strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+      opacity: 1;
+    }
+
+    .footer-copyright {
+      font-size: 13px;
+      color: var(--color-text-subtle);
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .main {
+        padding: 48px 20px 80px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .legal-content h2 {
+        font-size: 24px;
+        margin-top: 40px;
+      }
+
+      .legal-content h3 {
+        font-size: 16px;
+      }
+
+      .header-inner {
+        padding: 0 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Propare
+      </a>
+      <a href="index.html" class="logo">
+        <img src="data:image/png;base64,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" alt="Propare">
+        <span>PROPARE</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-header">
+      <h1 class="page-title">PRIVACY POLICY</h1>
+      <p class="page-meta">Effective Date: March 30th, 2026</p>
+    </div>
+
+    <div class="legal-content">
+      <p>This Privacy Policy explains how information about you is collected, used, and disclosed by Propare LLC ("Propare," "we," "us," or "our") when you access or use our website, mobile application, and other online products and services (collectively, "Services") or when you otherwise interact with us. By using Propare, you agree to the practices described below. Propare is an independent company and is not affiliated with or endorsed by any university, athletic department, or governing body.</p>
+
+      <h2>1. Information We Collect</h2>
+      <p>We collect information to connect athletes and coaches safely and effectively.</p>
+
+      <h3>Information you provide</h3>
+      <p><strong>Account information:</strong> Name, date of birth, email address, password, sport, skill level, and location (city and state).</p>
+      <p><strong>Athlete and parent forms:</strong> Age group, school, parent or guardian phone number and email address, and athletic goals.</p>
+      <p><strong>Coach profiles:</strong> Coaching experience, certifications, NCAA or athletic affiliation, sport specialization, pricing, and profile media.</p>
+      <p><strong>Training videos and clips:</strong> Video clips uploaded by athletes for video analysis sessions. These are stored securely and accessible only to the athlete and their assigned coach.</p>
+      <p><strong>Session data:</strong> Completed session records including booking history, timestamps, payment records, coach feedback, voice notes, drawings, and video analysis artifacts. This data forms the athlete's session history on the platform.</p>
+      <p><strong>Media and content:</strong> Photos, training videos, and in-app messages.</p>
+      <p><strong>Payment details:</strong> Processed securely through Stripe. Propare does not store full card numbers or banking information.</p>
+      <p><strong>Communications:</strong> Messages or support requests sent to us or to other users within the platform.</p>
+
+      <h3>Information collected automatically</h3>
+      <p><strong>Usage data:</strong> Device type, IP address, browser and app version, pages viewed, and session duration.</p>
+      <p><strong>Location data:</strong> General location inferred from IP address (city and state level only). We do not collect precise GPS location.</p>
+      <p><strong>Device permissions:</strong> Camera and microphone access during live coaching sessions. You will be prompted to grant these permissions before a live session begins. We do not record sessions without explicit consent from both parties.</p>
+      <p><strong>Cookies and analytics:</strong> Used to measure engagement, remember preferences, and improve platform features. See Section 5 for more details.</p>
+
+      <h2>2. How We Use Information</h2>
+      <p>We use your information to:</p>
+      <ul>
+        <li>Match athletes with qualified coaches.</li>
+        <li>Facilitate booking, communication, and secure payments.</li>
+        <li>Personalize recommendations and improve user experience.</li>
+        <li>Display session history and completed coaching records on the athlete's profile.</li>
+        <li>Send service updates, scheduling reminders, or policy notifications.</li>
+        <li>Ensure safety, compliance with NCAA, NIL, and COPPA guidelines, and prevent misuse or off-platform transactions.</li>
+        <li>Improve the platform through analytics and usage data.</li>
+      </ul>
+      <p><strong>We do not sell user data.</strong></p>
+
+      <h2>3. How We Share Information</h2>
+      <p>We may share your data only as needed to operate and improve the Service:</p>
+      <ul>
+        <li>With your connected coaches or athletes, as required to facilitate sessions.</li>
+        <li>With Stripe for secure payment processing. Stripe handles all financial and identity verification data.</li>
+        <li>With Microsoft Teams to facilitate live coaching sessions. Session links are generated and shared through Teams as part of the live session experience.</li>
+        <li>With trusted hosting or analytics partners who help maintain platform security and performance. All partners must comply with applicable privacy and data security standards.</li>
+        <li>With legal authorities if required by law or to protect rights, safety, or property.</li>
+        <li>With institutional compliance offices only when coaches or athletes authorize it or when legally required.</li>
+      </ul>
+      <p>In business transitions such as a merger or acquisition, we will notify users before any ownership or data transfer occurs. User data will be protected throughout any such transition.</p>
+
+      <h2>4. Data Security</h2>
+      <p>We use reasonable technical and organizational safeguards to protect your data, including:</p>
+      <ul>
+        <li>Encryption in transit (HTTPS) and encryption at rest.</li>
+        <li>Limited access to personal data by authorized staff only.</li>
+        <li>Regular system updates, audits, and monitoring.</li>
+      </ul>
+      <p>No system is completely secure. Users should exercise caution and report suspicious activity to <a href="mailto:support@propareapp.com">support@propareapp.com</a>.</p>
+      <p>In the event of a data breach that may affect your personal information, Propare will notify affected users as required by applicable law and take immediate steps to address the breach.</p>
+
+      <h2>5. Cookies and Tracking</h2>
+      <p>Propare uses cookies and similar tracking technologies to operate and improve the platform. Cookies are small files stored on your device that help us remember your preferences and measure engagement.</p>
+      <p>We use cookies for:</p>
+      <ul>
+        <li>Keeping you logged in during your session.</li>
+        <li>Remembering your preferences and settings.</li>
+        <li>Measuring how users interact with the platform so we can improve it.</li>
+        <li>Analytics through trusted third-party tools.</li>
+      </ul>
+      <p>You can control cookies through your browser settings. Disabling cookies may affect some platform functionality. We do not use cookies to track users across third-party websites for advertising purposes.</p>
+
+      <h2>6. Children's Privacy and Parental Consent</h2>
+      <p>Propare is designed for athletes 13 and older. For users under 13, a parent or legal guardian must create and approve the account. We comply with the Children's Online Privacy Protection Act (COPPA) and other relevant laws.</p>
+      <p>For users under 13, we collect only:</p>
+      <ul>
+        <li>Name and sport, provided by the parent or guardian during account creation.</li>
+        <li>Parent or guardian contact information for account management and safety.</li>
+        <li>Session activity necessary to deliver the coaching service.</li>
+      </ul>
+      <p>Training videos, session data, and coaching feedback for minor athletes are stored securely and accessible only to the athlete, their parent or guardian, and their assigned coach.</p>
+      <p>Parents and guardians may:</p>
+      <ul>
+        <li>Review their child's information at any time.</li>
+        <li>Request correction or deletion of their child's data.</li>
+        <li>Withdraw consent at any time by contacting <a href="mailto:privacy@propareapp.com">privacy@propareapp.com</a>.</li>
+      </ul>
+
+      <h2>7. NCAA and Institutional Compliance Information</h2>
+      <p>Coaches who are current or former NCAA student-athletes must comply with their institution's rules on employment, NIL, and branding.</p>
+      <p>Propare does not share data with universities or compliance offices unless legally required or authorized by the coach or athlete.</p>
+      <p>Propare may communicate with institutional compliance offices when coaches or athletes explicitly authorize it, such as when providing session records for compliance documentation purposes.</p>
+      <p>Use of university marks, logos, or facilities through the platform requires the coach's written institutional permission.</p>
+      <p>Propare assumes no liability for institutional or NIL compliance violations by users.</p>
+
+      <h2>8. International Users and F-1 Visa Coaches</h2>
+      <p>If you access or provide services through Propare outside the United States, your data may be transferred to and processed in the U.S. F-1 visa holders are responsible for ensuring that any paid coaching activity complies with immigration laws. Propare cannot provide immigration or work-eligibility advice.</p>
+
+      <h2>9. Data Retention</h2>
+      <p>Propare retains user data for as long as an account is active or as needed to provide the Service. Specifically:</p>
+      <ul>
+        <li>Session data, feedback, and coaching records are retained as part of the athlete's development history for as long as the account remains active.</li>
+        <li>Payment and transaction records are retained as required by law and for financial compliance purposes.</li>
+      </ul>
+      <p>If an account is deleted, personal data is removed within a reasonable timeframe. Some data may be retained longer if required by law or for legitimate business purposes such as fraud prevention.</p>
+      <p>For minor athletes, parents or guardians may request deletion of their child's data at any time by contacting <a href="mailto:privacy@propareapp.com">privacy@propareapp.com</a>.</p>
+
+      <h2>10. Your Rights and Choices</h2>
+      <p>You can:</p>
+      <ul>
+        <li>Access or update your account information at any time.</li>
+        <li>Request a copy of the personal data Propare holds about you.</li>
+        <li>Request deletion of your data at <a href="mailto:privacy@propareapp.com">privacy@propareapp.com</a>.</li>
+        <li>Opt out of non-essential communications in your account settings.</li>
+        <li>Request your session history and coaching records for your own use or for compliance documentation.</li>
+      </ul>
+      <p>We may retain limited data for legitimate business or legal purposes such as payment and transaction records.</p>
+
+      <h2>11. California Privacy Rights (CCPA)</h2>
+      <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):</p>
+      <ul>
+        <li>The right to know what personal information Propare collects, uses, and shares.</li>
+        <li>The right to request deletion of your personal information.</li>
+        <li>The right to opt out of the sale of your personal information. Propare does not sell personal information.</li>
+        <li>The right to non-discrimination for exercising your privacy rights.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:privacy@propareapp.com">privacy@propareapp.com</a>.</p>
+
+      <h2>12. Third Party Links</h2>
+      <p>Our platform may contain links to third-party websites or services such as Stripe or Microsoft Teams. Propare is not responsible for the privacy practices of these third parties. We encourage you to review the privacy policies of any third-party services you use in connection with Propare.</p>
+
+      <h2>13. Policy Updates</h2>
+      <p>We may revise this Privacy Policy periodically. Any updates will include a new Effective Date and we will notify users via the app or email. Continued use of Propare constitutes acceptance of the updated policy.</p>
+
+      <h2>14. Contact</h2>
+      <p>For questions, feedback, or privacy requests, please contact us at <a href="mailto:privacy@propareapp.com">privacy@propareapp.com</a> or <a href="mailto:support@propareapp.com">support@propareapp.com</a>.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@propareapp.com">Contact</a>
+      </div>
+      <p class="footer-copyright">&copy; 2026 Propare LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

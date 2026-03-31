@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | Propare</title>
+  <meta name="description" content="Propare Terms of Service - Read the terms and conditions for using the Propare coaching platform.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-base: #060608;
+      --color-surface: #0A0A0F;
+      --color-surface-elevated: #0F0F14;
+      --color-accent: #A4DE02;
+      --color-accent-dim: rgba(164, 222, 2, 0.15);
+      --color-text: #FFFFFF;
+      --color-text-muted: rgba(255, 255, 255, 0.7);
+      --color-text-subtle: rgba(255, 255, 255, 0.5);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: 150ms var(--ease-out);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-base);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    a:hover {
+      opacity: 0.8;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .back-link:hover {
+      color: var(--color-accent);
+      opacity: 1;
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-text);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo span {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Main Content */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+    }
+
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 6vw, 48px);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .page-meta {
+      font-size: 14px;
+      color: var(--color-text-subtle);
+    }
+
+    /* Legal Content */
+    .legal-content {
+      color: var(--color-text-muted);
+    }
+
+    .legal-content h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .legal-content h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .legal-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    .legal-content p {
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .legal-content ul {
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+
+    .legal-content li {
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .legal-content strong {
+      color: var(--color-text);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--color-border);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+      opacity: 1;
+    }
+
+    .footer-copyright {
+      font-size: 13px;
+      color: var(--color-text-subtle);
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .main {
+        padding: 48px 20px 80px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .legal-content h2 {
+        font-size: 24px;
+        margin-top: 40px;
+      }
+
+      .legal-content h3 {
+        font-size: 16px;
+      }
+
+      .header-inner {
+        padding: 0 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Propare
+      </a>
+      <a href="index.html" class="logo">
+        <img src="data:image/png;base64,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" alt="Propare">
+        <span>PROPARE</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="page-header">
+      <h1 class="page-title">TERMS OF SERVICE</h1>
+      <p class="page-meta">Last updated: March 30th, 2026</p>
+    </div>
+
+    <div class="legal-content">
+      <h2>1. Overview</h2>
+      <p>Welcome to Propare, a digital platform that connects athletes with qualified coaches for online training and performance improvement. By accessing or using our website, app, or any of our services ("Services"), you agree to comply with and be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, service will be refused. Propare is an independent company and is not affiliated with or endorsed by any university, athletic department, or institution.</p>
+
+      <h2>2. Eligibility</h2>
+      <h3>Athletes</h3>
+      <p>Athletes of any age may participate, provided that individuals under 18 have verified parental or guardian consent.</p>
+      <p>Athletes under 13 must have a parent or legal guardian create and manage the account on their behalf in compliance with COPPA regulations.</p>
+      <p>Propare is designed for youth, high school, and developing athletes seeking sport-specific coaching from verified NCAA-level or qualified coaches.</p>
+
+      <h3>Coaches</h3>
+      <p>Coaches must be at least 18 years old except as provided below.</p>
+      <p>Exceptionally skilled athletes under 18 may be approved to coach on Propare with verified parental or legal guardian consent and under a supervised account structure.</p>
+      <p>In such cases, a parent or legal guardian must co-sign all agreements, manage payments, and remain responsible for compliance with applicable laws and regulations.</p>
+      <p>Coaches who are current or former NCAA student-athletes must comply with NCAA, institutional, and NIL rules governing employment and compensation.</p>
+      <p>Coaches may identify their university affiliation by name but may not use university logos, marks, or facilities unless they have written institutional permission.</p>
+
+      <h3>International Student-Athletes (F-1 Visa Holders)</h3>
+      <p>Individuals on F-1 or other student visas are responsible for confirming that participation in paid coaching complies with U.S. immigration regulations. Propare does not provide legal or immigration advice and cannot verify work eligibility.</p>
+      <p>By using Propare, all users confirm that they are legally permitted to enter into this agreement.</p>
+
+      <h2>3. User Accounts</h2>
+      <p>To access our Services, users must create an account. You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. Propare reserves the right to suspend or terminate accounts that violate these Terms or any compliance rules.</p>
+
+      <h2>4. Services Provided</h2>
+      <p>Propare allows athletes to browse, review, book, and participate in online coaching sessions. Coaches can create profiles, set pricing, and manage availability. Propare acts solely as a facilitator and is not a party to any coaching relationship or transaction between athlete and coach. Coaches are independent contractors, not employees, agents, or representatives of Propare. All sessions must be conducted remotely and outside university facilities.</p>
+
+      <h3>Session Types</h3>
+      <p><strong>Live video sessions:</strong> Real-time one-on-one coaching conducted through Microsoft Teams or other Propare-approved video tools. The athlete books a time, pays, and receives a session link automatically.</p>
+      <p><strong>Video analysis sessions:</strong> The athlete uploads a single training clip and the coach reviews it using Propare's built-in tools. The coach provides timestamped feedback, corrections, and coaching notes. Once the coach delivers the session it locks permanently and becomes a replay-only record for the athlete. Coaches must deliver video analysis feedback within 48 hours of the athlete submitting their clip.</p>
+
+      <h3>Session Records</h3>
+      <p>Completed session data including feedback, voice notes, drawings, and video analysis is stored on the platform and accessible to the athlete and coach involved in that session. Session history is visible on the athlete's profile as a record of completed coaching activity.</p>
+
+      <h2>5. Coach Responsibilities</h2>
+      <p>Coaches using Propare agree to:</p>
+      <ul>
+        <li>Provide accurate, up-to-date information about their qualifications, sports, and pricing.</li>
+        <li>Maintain professional conduct and respectful communication with all athletes, parents, and staff.</li>
+        <li>Honor booked sessions or provide at least 24 hours notice for cancellations or rescheduling.</li>
+        <li>Deliver video analysis feedback within 48 hours of the athlete submitting their clip.</li>
+        <li>Conduct all communication exclusively through the Propare platform.</li>
+        <li>Comply with all institutional, NIL, and NCAA rules regarding outside employment and representation.</li>
+        <li>Refrain from using any university logos, team uniforms, or training facilities in their Propare profiles or sessions without written permission.</li>
+      </ul>
+      <p>Coaches must conduct all payments exclusively through Propare. Off-platform payments or solicitations are strictly prohibited. Violation of these responsibilities may result in suspension or removal from the platform.</p>
+      <p>Coaches must notify Propare through the platform of any session cancellation at the time of cancellation. Failure to provide notice may result in suspension or removal.</p>
+
+      <h2>6. Athlete and Parent Responsibilities</h2>
+      <p>Athletes and parents agree to:</p>
+      <ul>
+        <li>Provide accurate information when registering or booking sessions.</li>
+        <li>Ensure that minors are supervised by a parent or guardian during all communication and sessions.</li>
+        <li>Respect coaches' schedules and cancellation policies.</li>
+        <li>Communicate professionally and maintain respectful behavior.</li>
+        <li>Obtain parental or guardian consent before allowing any recorded sessions or use of likeness for marketing purposes.</li>
+      </ul>
+      <p>Violations may result in cancellation, suspension, or removal.</p>
+
+      <h2>7. Payments and Refunds</h2>
+      <p>Payments are securely processed through Stripe.</p>
+      <p>Coaches set their own rates and receive direct payouts to their Stripe accounts as independent contractors.</p>
+      <p>Propare charges a platform fee on every completed session. Live video sessions: Propare retains 10% of the session fee and the coach receives 90%. Video analysis sessions: Propare retains 20% of the session fee and the coach receives 80%.</p>
+      <p>Stripe charges a standard processing fee of 2.9% plus $0.30 per transaction which is deducted before payout.</p>
+      <p>Propare reserves the right to adjust platform fees in the future. Coaches will receive at least 14 days written notice before any fee changes take effect.</p>
+      <p>Coaches are responsible for any required income disclosure to their compliance office or NIL platform.</p>
+      <p>Refunds will be handled according to the Propare Refund Policy.</p>
+      <p>All payments must be conducted exclusively through the Propare platform. Off-platform transactions, including direct or third-party payments between users, are strictly prohibited. Any attempt to solicit or accept payment outside the Propare system will result in immediate suspension or permanent removal from the platform.</p>
+
+      <h2>8. Conduct and Safety</h2>
+      <p>Propare maintains a zero-tolerance policy for harassment, discrimination, or inappropriate conduct. All communication should remain on the platform for safety and transparency. Coaching minors must take place only through approved, secure channels provided by Propare.</p>
+      <p>The following conduct may result in immediate suspension or permanent removal from the platform:</p>
+      <ul>
+        <li>Accepting or soliciting off-platform payments.</li>
+        <li>Communicating with athletes or parents outside the Propare platform.</li>
+        <li>Two or more no-shows on confirmed sessions without notice.</li>
+        <li>Any conduct that puts the safety or wellbeing of an athlete or minor at risk.</li>
+        <li>Misrepresentation of qualifications, credentials, or athletic background.</li>
+        <li>Violating the Propare Content Moderation Rules.</li>
+        <li>Violation of NCAA, NIL, or institutional compliance rules in connection with Propare activity.</li>
+      </ul>
+
+      <h2>9. Intellectual Property</h2>
+      <p>All Propare trademarks, logos, software, and designs are the property of Propare. Coaches retain ownership of their own training materials and content but grant Propare a limited, non-exclusive right to display content for marketing or educational purposes with proper credit and parental consent when applicable. Propare will only use media or likeness in accordance with the signed Parent Consent Form. Parents who decline media use will have their child's content kept private and accessible only to their assigned coach.</p>
+
+      <h2>10. Limitation of Liability</h2>
+      <p>Propare serves as an intermediary platform and does not control or supervise the content of coaching sessions. By using the platform, users acknowledge that physical training involves inherent risks. Propare, its employees, and affiliates are not liable for any injury, loss, or damages arising from participation in training or the use of Propare's Services. By creating an account and using Propare, users agree to the terms of the Propare Liability Waiver.</p>
+
+      <h2>11. Privacy</h2>
+      <p>Propare respects user privacy and only collects data required to operate the platform, process payments, and ensure safety. User data will never be sold to third parties. See our <a href="privacy.html">Privacy Policy</a> for full details on data handling and storage.</p>
+
+      <h2>12. Compliance Disclaimer</h2>
+      <p>Each user is responsible for complying with their institution's, governing body's, and jurisdiction's rules and regulations. Propare is not responsible for violations of NCAA, NIL, or immigration policies by users. Each coach is responsible for ensuring their participation complies with NCAA and institutional regulations.</p>
+
+      <h2>13. Changes to These Terms</h2>
+      <p>Propare may update these Terms periodically. Updates will be posted on our website or app, and continued use of our Services constitutes acceptance of those changes.</p>
+
+      <h2>14. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of law principles.</p>
+
+      <h2>15. Severability</h2>
+      <p>If any provision of these Terms is held to be invalid or unenforceable by a court of competent jurisdiction, the remaining provisions shall remain in full force and effect.</p>
+
+      <h2>16. Dispute Resolution</h2>
+      <p>In the event of any dispute arising out of or relating to these Terms or the use of Propare's Services, users agree to first contact Propare at <a href="mailto:support@propareapp.com">support@propareapp.com</a> to attempt to resolve the matter informally before pursuing any legal action.</p>
+
+      <h2>17. Entire Agreement</h2>
+      <p>These Terms, together with the <a href="privacy.html">Propare Privacy Policy</a>, constitute the entire agreement between the user and Propare with respect to the use of the Services and supersede any prior or contemporaneous agreements, communications, or understandings.</p>
+
+      <h2>18. Contact</h2>
+      <p>For any questions or concerns about these Terms, please contact us at <a href="mailto:support@propareapp.com">support@propareapp.com</a>.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@propareapp.com">Contact</a>
+      </div>
+      <p class="footer-copyright">&copy; 2026 Propare LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

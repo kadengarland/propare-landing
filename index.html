@@ -1,0 +1,3721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propare | Elite Coaching, Anywhere</title>
+  <meta name="description" content="Find and train with elite coaches worldwide through live 1:1 sessions or video analysis. Propare is the remote coaching marketplace for serious athletes.">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════════════════
+       CSS RESET & CUSTOM PROPERTIES
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Colors */
+      --color-base: #060608;
+      --color-surface: #0A0A0F;
+      --color-surface-elevated: #0F0F14;
+      --color-accent: #A4DE02;
+      --color-accent-dim: rgba(164, 222, 2, 0.15);
+      --color-text: #FFFFFF;
+      --color-text-muted: rgba(255, 255, 255, 0.6);
+      --color-text-subtle: rgba(255, 255, 255, 0.4);
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-green-tint: rgba(26, 93, 62, 0.15);
+      --color-blue-tint: rgba(30, 64, 120, 0.15);
+      --color-error: #EF4444;
+      --color-success: #22C55E;
+
+      /* Purple accent for Option B */
+      --color-purple: #A855F7;
+      --color-purple-glow: #C084FC;
+      --color-purple-hover: #9333EA;
+      --color-purple-dim: rgba(168, 85, 247, 0.15);
+      --color-purple-border: rgba(168, 85, 247, 0.3);
+      --color-purple-shadow: rgba(168, 85, 247, 0.4);
+
+      /* Typography */
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      /* Spacing */
+      --nav-height: 72px;
+      --section-padding: 120px;
+      --container-max: 1200px;
+
+      /* Transitions */
+      --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: 150ms var(--ease-out);
+      --transition-normal: 300ms var(--ease-out);
+      --transition-slow: 500ms var(--ease-out);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-base);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    /* Focus states */
+    :focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       UTILITY CLASSES
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: background var(--transition-normal), backdrop-filter var(--transition-normal);
+    }
+
+    .nav.scrolled {
+      background: rgba(6, 6, 8, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-logo span {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+      padding: 8px 0;
+    }
+
+    .nav-link:hover {
+      color: var(--color-text);
+    }
+
+    .nav-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: var(--color-text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .nav-social a:hover {
+      color: var(--color-accent);
+    }
+
+    .nav-social svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-social {
+        gap: 8px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #particleCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Mobile: fully stabilized canvas */
+    @media (pointer: coarse), (max-width: 768px) {
+      #particleCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height fallback */
+        will-change: transform;
+        transform: translateZ(0);
+        touch-action: none;
+        backface-visibility: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: var(--nav-height) 24px 80px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 12vw, 120px);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.4s forwards;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      max-width: 480px;
+      margin: 0 auto 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.6s forwards;
+    }
+
+    .hero-proof {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--color-accent);
+      margin: 0 auto 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.7s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.8s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 180px;
+      min-height: 56px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: var(--color-base);
+    }
+
+    .btn-primary:hover {
+      background: #B8F218;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(164, 222, 2, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-accent);
+      border: 2px solid var(--color-accent);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-accent-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(164, 222, 2, 0.15);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 1.2s forwards, bounce 2s infinite 1.5s;
+    }
+
+    .scroll-indicator svg {
+      width: 32px;
+      height: 32px;
+      color: var(--color-text-subtle);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-8px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-4px);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       HOW IT WORKS SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .how-it-works {
+      background: #060608;
+      padding: 120px 0;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .how-it-works.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .how-it-works {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      letter-spacing: 0.02em;
+      margin-bottom: 64px;
+    }
+
+    /* How It Works - Phone Mockup Section */
+    .hiw-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .hiw-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: #A4DE02;
+      margin-bottom: 16px;
+    }
+
+    .hiw-headline {
+      font-family: var(--font-display);
+      font-size: 56px;
+      color: #FFFFFF;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hiw-subtext {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .hiw-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hiw-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .hiw-option-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #A4DE02;
+      margin-bottom: 8px;
+    }
+
+    .hiw-column.purple .hiw-option-label {
+      color: #A855F7;
+    }
+
+    .hiw-option-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+    }
+
+    .hiw-phone-desc {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      max-width: 280px;
+      margin: 16px auto 0;
+      line-height: 1.5;
+    }
+
+    /* Phone Glow Wrapper */
+    .phone-glow-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    .phone-glow-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(164,222,2,0.08) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hiw-column.purple .phone-glow-wrapper::before {
+      background: radial-gradient(ellipse at center, rgba(168,85,247,0.08) 0%, transparent 70%);
+    }
+
+    /* Phone Float Animation */
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Phone Frame */
+    .phone-frame {
+      width: 260px;
+      height: 520px;
+      background: #0A0A0F;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 44px;
+      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(164,222,2,0.25), 0 32px 64px rgba(0,0,0,0.6), 0 0 40px rgba(164,222,2,0.06);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: phoneFloat 4s ease-in-out infinite;
+    }
+
+    .hiw-column.purple .phone-frame {
+      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(168,85,247,0.25), 0 32px 64px rgba(0,0,0,0.6), 0 0 40px rgba(168,85,247,0.06);
+      animation-delay: 2s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .phone-frame {
+        animation: none;
+      }
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 24px;
+      background: #0A0A0F;
+      border-radius: 0 0 14px 14px;
+      border-bottom: 1.5px solid rgba(255,255,255,0.1);
+      border-left: 1.5px solid rgba(255,255,255,0.1);
+      border-right: 1.5px solid rgba(255,255,255,0.1);
+      z-index: 10;
+    }
+
+    .phone-screen {
+      background: #060608;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .phone-topbar {
+      background: #0A0A0F;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 10px 16px;
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .phone-topbar img {
+      height: 16px;
+      width: auto;
+    }
+
+    .phone-topbar span {
+      font-family: var(--font-display);
+      font-size: 14px;
+      color: #A4DE02;
+    }
+
+    .phone-home-indicator {
+      width: 80px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Live Session Phone */
+    .video-call-area {
+      margin: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      position: relative;
+    }
+
+    .video-box {
+      background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
+      border-radius: 10px;
+      height: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(164,222,2,0.03);
+      border: 1px solid rgba(164,222,2,0.08);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .video-box.coach-box {
+      box-shadow: inset 0 0 0 1px rgba(164,222,2,0.2);
+    }
+
+    .video-box-label {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .video-status {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 6px;
+      height: 6px;
+      background: #22C55E;
+      border-radius: 50%;
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .live-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #EF4444;
+      color: white;
+      font-family: var(--font-body);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      animation: livePulse 1.5s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .session-info-bar {
+      background: rgba(164,222,2,0.05);
+      border: 1px solid rgba(164,222,2,0.1);
+      border-radius: 8px;
+      margin: 0 12px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .session-info-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .session-info-left svg {
+      width: 16px;
+      height: 16px;
+      color: #A4DE02;
+    }
+
+    .session-info-left span {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: white;
+    }
+
+    .session-duration {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #A4DE02;
+      font-weight: 600;
+    }
+
+    .controls-bar {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 10px 12px;
+    }
+
+    .control-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .control-btn svg {
+      width: 16px;
+      height: 16px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .control-btn.end-call {
+      background: #EF4444;
+    }
+
+    .control-btn.end-call svg {
+      color: white;
+    }
+
+    .chat-area {
+      margin: 0 12px;
+      padding-top: 8px;
+    }
+
+    .chat-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: #A4DE02;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .chat-bubble {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px 10px 10px 2px;
+      padding: 8px 10px;
+    }
+
+    .chat-bubble p {
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Video Analysis Phone */
+    .video-player-area {
+      background: #0F0F14;
+      margin: 12px;
+      border-radius: 8px;
+      height: 130px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-player-area::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.02) 19px, rgba(255,255,255,0.02) 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.02) 19px, rgba(255,255,255,0.02) 20px);
+      pointer-events: none;
+    }
+
+    .video-annotation-arrow {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      width: 80px;
+      height: 60px;
+    }
+
+    .video-annotation-circle {
+      position: absolute;
+      top: 25px;
+      right: 50px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .playback-speed-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(168,85,247,0.3);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: #A855F7;
+    }
+
+    .video-filename {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .timeline-scrubber {
+      margin: 8px 12px;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .timeline-progress {
+      width: 35%;
+      height: 100%;
+      background: #A855F7;
+      border-radius: 2px;
+    }
+
+    .timeline-handle {
+      position: absolute;
+      top: -3.5px;
+      left: 35%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: #A855F7;
+      border-radius: 50%;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      top: -1px;
+      width: 5px;
+      height: 5px;
+      background: #A855F7;
+      opacity: 0.7;
+      border-radius: 50%;
+    }
+
+    .timeline-marker:nth-child(3) { left: 20%; }
+    .timeline-marker:nth-child(4) { left: 35%; }
+    .timeline-marker:nth-child(5) { left: 65%; }
+
+    .voice-note-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 2px solid #A855F7;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timestamp-badge {
+      background: #A855F7;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .voice-note-text {
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: rgba(255,255,255,0.8);
+      flex: 1;
+    }
+
+    .voice-note-icon {
+      flex-shrink: 0;
+    }
+
+    .voice-note-icon svg {
+      width: 10px;
+      height: 10px;
+      color: rgba(168,85,247,0.6);
+    }
+
+    .deliver-btn {
+      margin: 8px 12px;
+      background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(168,85,247,0.3);
+    }
+
+    .deliver-btn span {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 768px) {
+      .hiw-headline {
+        font-size: 36px;
+      }
+      .hiw-columns {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       COACHES SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .coaches {
+      padding: var(--section-padding) 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .coaches-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .coaches-proof {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-top: 16px;
+      font-weight: 400;
+    }
+
+    .coach-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .coach-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .coach-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .coach-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-out);
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(
+        400px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+        rgba(164, 222, 2, 0.12),
+        rgba(164, 222, 2, 0.06) 40%,
+        rgba(164, 222, 2, 0.02) 60%,
+        transparent 100%
+      );
+    }
+
+    .coach-card:hover::before {
+      opacity: 1;
+    }
+
+    .coach-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .coach-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, var(--color-base) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .coach-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+      transition: filter 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    }
+
+    .coach-card:hover .coach-image img {
+      filter: grayscale(0%);
+      transform: scale(1.03);
+    }
+
+    .coach-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px 28px 28px;
+      margin-top: -40px;
+      border-left: 3px solid var(--color-accent);
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      background: rgba(6, 6, 8, 0.9);
+      border-radius: 0 0 8px 8px;
+    }
+
+    .coach-sport {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .coach-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .coach-credential {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .coach-cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .coach-content {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 20px 24px 24px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       SIGNUP SECTIONS (ATHLETE & COACH)
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .signup-section {
+      padding: var(--section-padding) 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signup-section.athlete {
+      background: linear-gradient(135deg, var(--color-green-tint), var(--color-base));
+    }
+
+    .signup-section.coach {
+      background: linear-gradient(135deg, var(--color-blue-tint), var(--color-base));
+    }
+
+    .signup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .signup-grid.reversed {
+      direction: rtl;
+    }
+
+    .signup-grid.reversed > * {
+      direction: ltr;
+    }
+
+    .signup-content {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .signup-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .signup-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5vw, 56px);
+      letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+
+    .signup-desc {
+      color: var(--color-text-muted);
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .signup-benefits {
+      list-style: none;
+    }
+
+    .signup-benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--color-text-muted);
+    }
+
+    .signup-benefits svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Form Styles */
+    .signup-form-wrapper {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .signup-form-wrapper.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+    }
+
+    .signup-form {
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--color-text);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--color-base);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      color: var(--color-text);
+      font-size: 15px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--color-text-subtle);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-accent-dim);
+    }
+
+    .form-input.error,
+    .form-select.error,
+    .form-textarea.error {
+      border-color: var(--color-error);
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='%23999'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 40px;
+    }
+
+    .form-select option {
+      background: var(--color-base);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-error {
+      font-size: 13px;
+      color: var(--color-error);
+      margin-top: 6px;
+      display: none;
+    }
+
+    .form-error.show {
+      display: block;
+    }
+
+    /* Guardian fields - conditional reveal */
+    .guardian-fields {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
+    }
+
+    .guardian-fields.show {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .guardian-fields .form-row {
+      padding-top: 8px;
+    }
+
+    .guardian-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 0 20px;
+    }
+
+    .guardian-divider::before,
+    .guardian-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .guardian-divider span {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Instagram conditional field */
+    .instagram-field {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
+    }
+
+    .instagram-field.show {
+      max-height: 120px;
+      opacity: 1;
+    }
+
+    .contact-prefs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      margin: -8px;
+      transition: border-color var(--transition-fast);
+    }
+
+    .contact-prefs.error {
+      border-color: var(--color-error);
+    }
+
+    .contact-pref {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .contact-pref input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-accent);
+    }
+
+    .btn-submit {
+      width: 100%;
+      margin-top: 8px;
+      position: relative;
+    }
+
+    .btn-submit.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .btn-submit .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top-color: var(--color-base);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
+    .btn-submit.loading .spinner {
+      display: inline-block;
+    }
+
+    .btn-submit.loading .btn-text {
+      opacity: 0.7;
+    }
+
+    .form-disclaimer {
+      font-size: 12px;
+      color: var(--color-text-subtle);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .form-disclaimer a {
+      color: var(--color-text-muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color var(--transition-fast);
+    }
+
+    .form-disclaimer a:hover {
+      color: var(--color-accent);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success svg {
+      width: 64px;
+      height: 64px;
+      color: var(--color-accent);
+      margin-bottom: 24px;
+    }
+
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .form-success p {
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .signup-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .signup-grid.reversed {
+        direction: ltr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .signup-form {
+        padding: 24px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .footer {
+      background: #030305;
+      padding: 64px 0 32px;
+      border-top: 1px solid var(--color-border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-brand span {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-tagline {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      max-width: 280px;
+    }
+
+    .footer-heading {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--color-surface);
+      border-radius: 8px;
+      color: var(--color-text-muted);
+      transition: all var(--transition-fast);
+    }
+
+    .footer-social a:hover {
+      background: var(--color-accent);
+      color: var(--color-base);
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer-copyright {
+      font-size: 13px;
+      color: var(--color-text-subtle);
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        padding: 32px 0 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 16px;
+        margin-bottom: 20px;
+      }
+
+      /* Brand/tagline spans full width on mobile */
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+        margin-bottom: 8px;
+      }
+
+      .footer-tagline {
+        max-width: 100%;
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+
+      /* Quick Links and Legal side by side */
+      .footer-nav {
+        /* Each takes one column */
+      }
+
+      .footer-heading {
+        margin-bottom: 12px;
+        font-size: 11px;
+      }
+
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+
+      .footer-links a {
+        font-size: 13px;
+      }
+
+      /* Hide Connect section - social icons are in nav */
+      .footer-connect {
+        display: none;
+      }
+
+      .footer-bottom {
+        padding-top: 16px;
+      }
+
+      .footer-copyright {
+        font-size: 12px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       MOBILE POLISH (390px and below)
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    @media (max-width: 480px) {
+      :root {
+        --section-padding: 80px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      /* Hero mobile */
+      .hero-title {
+        font-size: 48px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+
+      .hero-proof {
+        font-size: 12px;
+        margin-bottom: 32px;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 0 16px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 52px;
+        font-size: 14px;
+        padding: 14px 24px;
+      }
+
+      /* Flow diagram mobile */
+      .flow-origin {
+        padding: 0 16px;
+      }
+
+      .flow-icon {
+        width: 64px;
+        height: 64px;
+      }
+
+      .flow-icon svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .flow-title {
+        font-size: 22px;
+      }
+
+      .flow-path {
+        padding: 24px 20px;
+      }
+
+      .path-title {
+        font-size: 20px;
+      }
+
+      .path-step {
+        padding: 10px 16px;
+      }
+
+      .path-step span {
+        font-size: 13px;
+      }
+
+      .path-desc {
+        font-size: 13px;
+      }
+
+      .flow-result-content {
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .flow-result-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .flow-result-title {
+        font-size: 16px;
+      }
+
+      .flow-result-desc {
+        font-size: 13px;
+      }
+
+      /* Coach cards mobile */
+      .coach-cards {
+        gap: 20px;
+      }
+
+      .coach-image {
+        aspect-ratio: 16/10;
+      }
+
+      .coach-content {
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 16px;
+        padding: 18px 20px 20px;
+        margin-top: -32px;
+      }
+
+      .coach-name {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .coach-credential {
+        font-size: 13px;
+      }
+
+      .coaches-proof {
+        font-size: 13px;
+        padding: 0 16px;
+      }
+
+      /* Signup sections mobile */
+      .signup-title {
+        font-size: 36px;
+      }
+
+      .signup-desc {
+        font-size: 15px;
+      }
+
+      .signup-benefits li {
+        font-size: 14px;
+      }
+
+      .signup-form {
+        padding: 20px;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 12px 14px;
+        font-size: 16px; /* Prevents iOS zoom */
+      }
+
+      .form-label {
+        font-size: 13px;
+      }
+
+      .btn-submit {
+        font-size: 14px;
+        min-height: 52px;
+      }
+
+      /* Footer mobile */
+      .footer {
+        padding: 48px 0 24px;
+      }
+
+      .footer-tagline {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .hero-title {
+        font-size: 42px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .signup-title {
+        font-size: 32px;
+      }
+
+      .flow-paths {
+        gap: 16px;
+      }
+
+      .flow-path {
+        padding: 20px 16px;
+      }
+
+      .coach-content {
+        padding: 16px 18px 18px;
+      }
+
+      .coach-name {
+        font-size: 20px;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       WAITLIST COUNTER
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .waitlist-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      border: 1px solid rgba(164, 222, 2, 0.25);
+      border-radius: 999px;
+      padding: 6px 20px;
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s var(--ease-out) 0.75s forwards;
+    }
+
+    .waitlist-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      animation: pulse 1.5s ease-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       TICKER BAR
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .ticker {
+      width: 100%;
+      background: #0F0F14;
+      border-top: 1px solid rgba(164, 222, 2, 0.3);
+      border-bottom: 1px solid rgba(164, 222, 2, 0.3);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+      animation: ticker-scroll 35s linear infinite;
+    }
+
+    @keyframes ticker-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .ticker-phrase {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+
+    .ticker-phrase:nth-child(odd) {
+      color: #FFFFFF;
+    }
+
+    .ticker-phrase:nth-child(even) {
+      color: var(--color-accent);
+    }
+
+    .ticker-dot {
+      color: rgba(164, 222, 2, 0.4);
+      padding: 0 4px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       HOW IT WORKS V2 - PREVIEW SECTION
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    .hiw-preview {
+      background: #060608;
+      padding: 120px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hiw-preview-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .hiw-preview-label {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .hiw-preview-title {
+      font-family: var(--font-display);
+      font-size: 56px;
+      color: #FFFFFF;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .hiw-preview-subtitle {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hiw-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      align-items: center;
+    }
+
+    /* Phone Mockup */
+    .hiw-phone-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hiw-phone {
+      width: 280px;
+      height: 560px;
+      background: #0A0A0F;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: 40px;
+      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(164, 222, 2, 0.15), 0 40px 80px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hiw-phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 24px;
+      background: #0A0A0F;
+      border-radius: 0 0 16px 16px;
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-left: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-right: 1.5px solid rgba(255, 255, 255, 0.12);
+      z-index: 10;
+    }
+
+    .hiw-phone-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #060608;
+      border-radius: 38px;
+      overflow: hidden;
+    }
+
+    /* Scene Container with clip-path wipe transition */
+    .hiw-scene {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: inset(0 100% 0 0);
+      will-change: clip-path, opacity;
+    }
+
+    .hiw-scene.active {
+      animation: sceneWipeIn 0.5s ease-in-out forwards;
+    }
+
+    .hiw-scene.exiting {
+      animation: sceneWipeOut 0.5s ease-in-out forwards;
+    }
+
+    @keyframes sceneWipeIn {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0% 0 0); }
+    }
+
+    @keyframes sceneWipeOut {
+      from { clip-path: inset(0 0% 0 0); }
+      to { clip-path: inset(0 0% 0 100%); }
+    }
+
+    /* Phone Top Bar */
+    .hiw-phone-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #0A0A0F;
+      padding: 10px 0;
+      padding-top: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hiw-phone-topbar img {
+      height: 20px;
+      width: auto;
+      vertical-align: middle;
+    }
+
+    .hiw-phone-topbar span {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--color-accent);
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+    }
+
+    /* Scene 1 - Video Analysis */
+    .hiw-video-thumb {
+      background: #0F0F14;
+      border-radius: 8px;
+      margin: 12px;
+      height: 140px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .hiw-scene.active .hiw-video-thumb {
+      animation: thumbFadeIn 0.4s ease forwards;
+    }
+
+    @keyframes thumbFadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Video scrub bar */
+    .hiw-video-scrub {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--color-accent);
+      width: 0;
+      border-radius: 0 0 8px 8px;
+      will-change: width;
+    }
+
+    .hiw-scene.active .hiw-video-scrub {
+      animation: scrubFill 0.6s ease-in-out 0.4s forwards;
+    }
+
+    @keyframes scrubFill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    .hiw-play-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(164, 222, 2, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      will-change: transform, opacity, filter;
+    }
+
+    .hiw-scene.active .hiw-play-btn {
+      animation: playBtnPulse 0.4s ease 0.4s forwards;
+    }
+
+    @keyframes playBtnPulse {
+      0% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 0 rgba(164, 222, 2, 0)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(164, 222, 2, 0.8)); }
+      100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 4px rgba(164, 222, 2, 0.4)); }
+    }
+
+    .hiw-play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 14px solid #000;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      margin-left: 3px;
+    }
+
+    .hiw-video-name {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .hiw-scene.active .hiw-video-name {
+      animation: thumbFadeIn 0.4s ease 0.4s forwards;
+    }
+
+    .hiw-feedback-cards {
+      padding: 0 6px;
+    }
+
+    .hiw-feedback-card {
+      background: #0F0F14;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-left: 2px solid var(--color-accent);
+      opacity: 0;
+      transform: translateX(-40px);
+      will-change: transform, opacity;
+    }
+
+    .hiw-scene.active .hiw-feedback-card {
+      animation: cardSlideIn 0.35s ease-out forwards;
+    }
+
+    .hiw-scene.active .hiw-feedback-card:nth-child(1) { animation-delay: 0.8s; }
+    .hiw-scene.active .hiw-feedback-card:nth-child(2) { animation-delay: 1.3s; }
+    .hiw-scene.active .hiw-feedback-card:nth-child(3) { animation-delay: 1.8s; }
+
+    @keyframes cardSlideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hiw-timestamp {
+      background: var(--color-accent);
+      color: #000;
+      font-family: var(--font-display);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .hiw-feedback-text {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+
+    /* Scene 2 - Live Session */
+    .hiw-video-call {
+      display: flex;
+      gap: 8px;
+      margin: 12px;
+      position: relative;
+    }
+
+    .hiw-call-box {
+      flex: 1;
+      background: #0F0F14;
+      border-radius: 8px;
+      height: 130px;
+      position: relative;
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .hiw-scene.active .hiw-call-box {
+      animation: thumbFadeIn 0.5s ease forwards;
+    }
+
+    .hiw-call-label {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-family: var(--font-body);
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hiw-call-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .hiw-live-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #EF4444;
+      color: #FFFFFF;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      opacity: 0;
+      transform: scale(0);
+      will-change: transform, opacity;
+    }
+
+    .hiw-scene.active .hiw-live-badge {
+      animation: liveBadgeIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards, livePulse 1s ease-in-out 0.85s infinite;
+    }
+
+    @keyframes liveBadgeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .hiw-chat-area {
+      padding: 0 6px;
+    }
+
+    .hiw-chat-msg {
+      margin: 6px;
+      opacity: 0;
+      transform: translateY(20px);
+      will-change: transform, opacity;
+    }
+
+    .hiw-scene.active .hiw-chat-msg {
+      animation: chatSlideUp 0.35s ease-out forwards;
+    }
+
+    .hiw-scene.active .hiw-chat-msg:nth-child(1) { animation-delay: 1.0s; }
+    .hiw-scene.active .hiw-chat-msg:nth-child(2) { animation-delay: 2.0s; }
+
+    @keyframes chatSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hiw-chat-label {
+      font-family: var(--font-body);
+      font-size: 9px;
+      color: var(--color-accent);
+      margin-bottom: 4px;
+    }
+
+    .hiw-chat-bubble {
+      background: #1A1A1F;
+      border-radius: 12px 12px 12px 2px;
+      padding: 8px 12px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #FFFFFF;
+      line-height: 1.4;
+    }
+
+    /* Progress Bar */
+    .hiw-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hiw-progress-fill {
+      height: 100%;
+      background: var(--color-accent);
+      width: 0;
+      will-change: width;
+    }
+
+    .hiw-scene.active .hiw-progress-fill {
+      animation: progressFill 5s linear forwards;
+    }
+
+    @keyframes progressFill {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Right Side Content */
+    .hiw-content {
+      position: relative;
+      height: 360px;
+    }
+
+    .hiw-content-scene {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+    }
+
+    .hiw-content-scene.active {
+      opacity: 1;
+    }
+
+    .hiw-content-label {
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .hiw-content-headline {
+      font-family: var(--font-display);
+      font-size: 42px;
+      color: #FFFFFF;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hiw-content-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hiw-bullets {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .hiw-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 12px;
+    }
+
+    .hiw-bullets li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Scene Indicators */
+    .hiw-indicators {
+      display: flex;
+      gap: 8px;
+    }
+
+    .hiw-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .hiw-indicator.active {
+      background: var(--color-accent);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .hiw-preview-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hiw-preview-title {
+        font-size: 36px;
+      }
+
+      .hiw-phone {
+        width: 240px;
+        height: 480px;
+      }
+
+      .hiw-video-thumb {
+        height: 110px;
+      }
+
+      .hiw-call-box {
+        height: 100px;
+      }
+
+      .hiw-content-headline {
+        font-size: 28px;
+      }
+
+      .hiw-content {
+        text-align: center;
+        height: 440px;
+      }
+
+      .hiw-bullets {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .hiw-indicators {
+        justify-content: center;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .hiw-scene,
+      .hiw-content-scene,
+      .hiw-feedback-card,
+      .hiw-chat-msg,
+      .hiw-progress-fill,
+      .hiw-live-badge,
+      .hiw-video-thumb,
+      .hiw-play-btn,
+      .hiw-video-name,
+      .hiw-video-scrub,
+      .hiw-call-box {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+      }
+
+      .hiw-progress-fill {
+        width: 100% !important;
+      }
+
+      .hiw-video-scrub {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="data:image/png;base64,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" alt="Propare">
+        <span>PROPARE</span>
+      </a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#athlete" class="nav-link">For Athletes</a>
+          <a href="#coach" class="nav-link">For Coaches</a>
+        </div>
+        <div class="nav-social">
+          <a href="https://www.instagram.com/propareofficial/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@propareofficial" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/propareofficial" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61580974605219" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       HERO SECTION
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <p class="hero-eyebrow">PROPARE</p>
+      <h1 class="hero-title">ELITE COACHING,<br>ANYWHERE.</h1>
+      <p class="hero-subtitle">Find and train with top-level coaches from any location.</p>
+      <p class="hero-proof">Train with NCAA and pro athletes.</p>
+      <div class="waitlist-counter">
+        <span class="waitlist-dot"></span>
+        <span>JOIN <span id="waitlist-count">12</span> ATHLETES ALREADY ON THE WAITLIST</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#athlete" class="btn btn-primary">I'M AN ATHLETE</a>
+        <a href="#coach" class="btn btn-secondary">I'M A COACH</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       TICKER BAR
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-phrase">OUTWORK EVERYONE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NO DAYS OFF</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">WHILE THEY SLEEP YOU TRAIN</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FIRST IN LAST OUT</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THE GRIND IS THE GOAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">YOUR NEXT LEVEL IS ONE COACH AWAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">COMPETE AT THE HIGHEST LEVEL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRAIN LIKE THE PROS DO</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NCAA TO PROFESSIONAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BRIDGE THE GAP</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">YOUR COACH DOESN'T HAVE TO BE LOCAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">ELITE COACHING ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">DISTANCE IS NOT AN EXCUSE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THE BEST COACHES ARE NOW ACCESSIBLE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FIND YOUR COACH TODAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NO GYM REQUIRED</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">SERIOUS ATHLETES ONLY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BUILD YOUR EDGE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">VIDEO ANALYSIS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">LIVE 1:1 SESSIONS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FRAME BY FRAME BREAKDOWNS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">REAL TIME FEEDBACK</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRACK AND FIELD</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THROWS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">SPRINTS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">JUMPS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">REMOTE COACHING</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TIMESTAMPED FEEDBACK</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">COACH FROM ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRAIN FROM ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BOOK A SESSION TODAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">UPLOAD YOUR FILM</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">GET COACHED BY ELITES</span><span class="ticker-dot">·</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-phrase">OUTWORK EVERYONE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NO DAYS OFF</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">WHILE THEY SLEEP YOU TRAIN</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FIRST IN LAST OUT</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THE GRIND IS THE GOAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">YOUR NEXT LEVEL IS ONE COACH AWAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">COMPETE AT THE HIGHEST LEVEL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRAIN LIKE THE PROS DO</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NCAA TO PROFESSIONAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BRIDGE THE GAP</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">YOUR COACH DOESN'T HAVE TO BE LOCAL</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">ELITE COACHING ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">DISTANCE IS NOT AN EXCUSE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THE BEST COACHES ARE NOW ACCESSIBLE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FIND YOUR COACH TODAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">NO GYM REQUIRED</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">SERIOUS ATHLETES ONLY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BUILD YOUR EDGE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">VIDEO ANALYSIS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">LIVE 1:1 SESSIONS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">FRAME BY FRAME BREAKDOWNS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">REAL TIME FEEDBACK</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRACK AND FIELD</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">THROWS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">SPRINTS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">JUMPS</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">REMOTE COACHING</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TIMESTAMPED FEEDBACK</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">COACH FROM ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">TRAIN FROM ANYWHERE</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">BOOK A SESSION TODAY</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">UPLOAD YOUR FILM</span><span class="ticker-dot">·</span>
+      <span class="ticker-phrase">GET COACHED BY ELITES</span><span class="ticker-dot">·</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       HOW PROPARE WORKS
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="hiw-header">
+        <p class="hiw-label">HOW PROPARE WORKS</p>
+        <h2 class="hiw-headline">TRAIN WITH ELITE COACHES — YOUR WAY.</h2>
+        <p class="hiw-subtext">Two ways to get coached. One platform.</p>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="hiw-columns">
+        <!-- Left Column - Option A: Live 1:1 Session -->
+        <div class="hiw-column">
+          <span class="hiw-option-label">OPTION A</span>
+          <h3 class="hiw-option-title">LIVE 1:1 SESSION</h3>
+
+          <!-- Phone Frame -->
+          <div class="phone-glow-wrapper">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Top Bar -->
+              <div class="phone-topbar">
+              </div>
+
+              <!-- Video Call Area -->
+              <div class="video-call-area">
+                <div class="live-badge">LIVE</div>
+                <div class="video-box coach-box">
+                  <span class="video-box-label">COACH</span>
+                  <div class="video-status"></div>
+                </div>
+                <div class="video-box">
+                  <span class="video-box-label">ATHLETE</span>
+                  <div class="video-status"></div>
+                </div>
+              </div>
+
+              <!-- Session Info Bar -->
+              <div class="session-info-bar">
+                <div class="session-info-left">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  </svg>
+                  <span>Live Session</span>
+                </div>
+                <span class="session-duration">32:14</span>
+              </div>
+
+              <!-- Controls Bar -->
+              <div class="controls-bar">
+                <div class="control-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                  </svg>
+                </div>
+                <div class="control-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"/>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                  </svg>
+                </div>
+                <div class="control-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <div class="control-btn end-call">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Chat Area -->
+              <div class="chat-area">
+                <span class="chat-label">COACH</span>
+                <div class="chat-bubble">
+                  <p>Drive your hips through on the release — great improvement from last week</p>
+                </div>
+              </div>
+
+              <!-- Home Indicator -->
+              <div class="phone-home-indicator"></div>
+            </div>
+          </div>
+          </div>
+
+          <p class="hiw-phone-desc">Real-time coaching with screen share, live feedback, and direct conversation — from anywhere in the world.</p>
+        </div>
+
+        <!-- Right Column - Option B: Video Analysis -->
+        <div class="hiw-column purple">
+          <span class="hiw-option-label">OPTION B</span>
+          <h3 class="hiw-option-title">VIDEO ANALYSIS</h3>
+
+          <!-- Phone Frame -->
+          <div class="phone-glow-wrapper">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- Top Bar -->
+              <div class="phone-topbar">
+              </div>
+
+              <!-- Video Player Area -->
+              <div class="video-player-area">
+                <!-- Annotation Arrow -->
+                <svg class="video-annotation-arrow" viewBox="0 0 80 60" fill="none">
+                  <path d="M10 50 Q 30 20, 70 15" stroke="#A4DE02" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+                  <path d="M65 10 L 70 15 L 63 18" stroke="#A4DE02" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+                </svg>
+                <!-- Annotation Circle -->
+                <svg class="video-annotation-circle" viewBox="0 0 30 30" fill="none">
+                  <circle cx="15" cy="15" r="12" stroke="#A4DE02" stroke-width="1.5" fill="none" opacity="0.9"/>
+                </svg>
+                <span class="playback-speed-badge">0.5x</span>
+                <span class="video-filename">shot_put_competition.mp4</span>
+              </div>
+
+              <!-- Timeline Scrubber -->
+              <div class="timeline-scrubber">
+                <div class="timeline-progress"></div>
+                <div class="timeline-handle"></div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-marker"></div>
+              </div>
+
+              <!-- Voice Note Cards -->
+              <div class="voice-note-card">
+                <span class="timestamp-badge">0.24s</span>
+                <span class="voice-note-text">Drive through your hips more</span>
+                <div class="voice-note-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="voice-note-card">
+                <span class="timestamp-badge">0.44s</span>
+                <span class="voice-note-text">Release point is too early</span>
+                <div class="voice-note-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="voice-note-card">
+                <span class="timestamp-badge">0.83s</span>
+                <span class="voice-note-text">Great footwork sequence</span>
+                <div class="voice-note-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Deliver Button -->
+              <div class="deliver-btn">
+                <span>DELIVER SESSION</span>
+              </div>
+
+              <!-- Home Indicator -->
+              <div class="phone-home-indicator"></div>
+            </div>
+          </div>
+          </div>
+
+          <p class="hiw-phone-desc">Frame-by-frame video breakdowns with timestamped voice notes, drawings, and actionable coaching insights.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       COACHES SECTION
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="coaches">
+    <div class="container">
+      <div class="coaches-header">
+        <p class="section-eyebrow">World-Class Coaches</p>
+        <h2 class="section-title">LEARN FROM THE BEST.</h2>
+        <p class="coaches-proof">All coaches have competed at the NCAA or professional level.</p>
+      </div>
+      <div class="coach-cards">
+        <div class="coach-card" data-delay="0">
+          <div class="coach-image">
+            <img src="images/coach-shaquille.jpg" alt="Shaquille Emanuelson" loading="lazy">
+          </div>
+          <div class="coach-content">
+            <span class="coach-sport">Discus</span>
+            <h3 class="coach-name">SHAQUILLE EMANUELSON</h3>
+            <p class="coach-credential">Netherlands National Record Holder</p>
+          </div>
+        </div>
+        <div class="coach-card" data-delay="100">
+          <div class="coach-image">
+            <img src="images/coach-garrett.jpg" alt="Garrett Kaaland" loading="lazy">
+          </div>
+          <div class="coach-content">
+            <span class="coach-sport">Sprints</span>
+            <h3 class="coach-name">GARRETT KAALAND</h3>
+            <p class="coach-credential">#2 All-Time Indoor 200m · USC</p>
+          </div>
+        </div>
+        <div class="coach-card" data-delay="200">
+          <div class="coach-image">
+            <img src="images/coach-texas.jpg" alt="Texas Tanner" loading="lazy">
+          </div>
+          <div class="coach-content">
+            <span class="coach-sport">Throws</span>
+            <h3 class="coach-name">TEXAS TANNER</h3>
+            <p class="coach-credential">NCAA All-American in Shot Put, Hammer, Discus & Weight Throw</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       ATHLETE SIGNUP
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="signup-section athlete" id="athlete">
+    <div class="container">
+      <div class="signup-grid">
+        <div class="signup-content">
+          <p class="section-eyebrow">For Athletes</p>
+          <h2 class="signup-title">UNLOCK YOUR POTENTIAL.</h2>
+          <p class="signup-desc">Train with elite coaches from anywhere in the world. Whether you need live 1:1 sessions or detailed video analysis, Propare connects you with athletes who've competed at the highest levels.</p>
+          <ul class="signup-benefits">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Live 1:1 coaching sessions with real-time feedback</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Video analysis with frame-by-frame breakdowns</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Remote access to coaches you couldn't reach locally</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Structured development that compounds over time</span>
+            </li>
+          </ul>
+        </div>
+        <div class="signup-form-wrapper">
+          <div class="signup-form">
+            <form name="athlete-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="athleteForm">
+              <input type="hidden" name="form-name" value="athlete-signup">
+              <p class="sr-only">
+                <label>Don't fill this out: <input name="bot-field"></label>
+              </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="athlete-first">First Name *</label>
+                  <input type="text" id="athlete-first" name="first-name" class="form-input" required>
+                  <p class="form-error" id="athlete-first-error">Please enter your first name</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="athlete-last">Last Name *</label>
+                  <input type="text" id="athlete-last" name="last-name" class="form-input" required>
+                  <p class="form-error" id="athlete-last-error">Please enter your last name</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="athlete-email">Email *</label>
+                  <input type="email" id="athlete-email" name="email" class="form-input" required>
+                  <p class="form-error" id="athlete-email-error">Please enter a valid email</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="athlete-phone">Phone *</label>
+                  <input type="tel" id="athlete-phone" name="phone" class="form-input" required>
+                  <p class="form-error" id="athlete-phone-error">Please enter your phone number</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="athlete-age">Are you 18 or older? *</label>
+                <select id="athlete-age" name="age-verification" class="form-select" required>
+                  <option value="">Select...</option>
+                  <option value="yes">Yes, I am 18 or older</option>
+                  <option value="no">No, I am under 18</option>
+                </select>
+                <p class="form-error" id="athlete-age-error">Please select an option</p>
+              </div>
+              <div class="guardian-fields" id="athlete-guardian-fields">
+                <div class="guardian-divider"><span>Parent/Guardian Info</span></div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="athlete-guardian-name">Guardian Name *</label>
+                    <input type="text" id="athlete-guardian-name" name="guardian-name" class="form-input">
+                    <p class="form-error" id="athlete-guardian-name-error">Please enter guardian name</p>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="athlete-guardian-email">Guardian Email *</label>
+                    <input type="email" id="athlete-guardian-email" name="guardian-email" class="form-input">
+                    <p class="form-error" id="athlete-guardian-email-error">Please enter a valid email</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="athlete-guardian-phone">Guardian Phone</label>
+                  <input type="tel" id="athlete-guardian-phone" name="guardian-phone" class="form-input">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="athlete-sport">What event(s) are you training for? *</label>
+                <textarea id="athlete-sport" name="sport" class="form-textarea" placeholder="e.g., Track & Field - Sprints, Shot Put..." required></textarea>
+                <p class="form-error" id="athlete-sport-error">Please tell us about your sport</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred contact method *</label>
+                <div class="contact-prefs" id="athlete-contact-prefs">
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-email" value="email" checked>
+                    <span>Email</span>
+                  </label>
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-text" value="text">
+                    <span>Text</span>
+                  </label>
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-instagram" value="instagram" id="athlete-contact-instagram">
+                    <span>Instagram</span>
+                  </label>
+                </div>
+                <p class="form-error" id="athlete-contact-prefs-error">Please select at least one contact method</p>
+              </div>
+              <div class="instagram-field" id="athlete-instagram-field">
+                <div class="form-group">
+                  <label class="form-label" for="athlete-instagram">Instagram Username *</label>
+                  <input type="text" id="athlete-instagram" name="instagram-username" class="form-input" placeholder="@username">
+                  <p class="form-error" id="athlete-instagram-error">Please enter your Instagram username</p>
+                </div>
+              </div>
+              <p class="form-disclaimer">By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span class="spinner"></span>
+                <span class="btn-text">GET EARLY ACCESS — LIMITED SPOTS</span>
+              </button>
+            </form>
+            <div class="form-success" id="athlete-success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <h3>YOU'RE IN.</h3>
+              <p>We'll be in touch soon with early access details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       COACH SIGNUP
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="signup-section coach" id="coach">
+    <div class="container">
+      <div class="signup-grid reversed">
+        <div class="signup-content">
+          <p class="section-eyebrow">For Coaches</p>
+          <h2 class="signup-title">GUIDE THE NEXT LEVEL.</h2>
+          <p class="signup-desc">Turn your competitive experience into impact. Offer live 1:1 sessions, video analysis, or both. Propare is built for structured remote coaching and repeat engagement with athletes who are serious about improvement.</p>
+          <ul class="signup-benefits">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Offer live sessions, video analysis, or both</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Set your own rates and availability</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Reach athletes globally from anywhere</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Build recurring relationships with dedicated athletes</span>
+            </li>
+          </ul>
+        </div>
+        <div class="signup-form-wrapper">
+          <div class="signup-form">
+            <form name="coach-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="coachForm">
+              <input type="hidden" name="form-name" value="coach-signup">
+              <p class="sr-only">
+                <label>Don't fill this out: <input name="bot-field"></label>
+              </p>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="coach-first">First Name *</label>
+                  <input type="text" id="coach-first" name="first-name" class="form-input" required>
+                  <p class="form-error" id="coach-first-error">Please enter your first name</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="coach-last">Last Name *</label>
+                  <input type="text" id="coach-last" name="last-name" class="form-input" required>
+                  <p class="form-error" id="coach-last-error">Please enter your last name</p>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="coach-email">Email *</label>
+                  <input type="email" id="coach-email" name="email" class="form-input" required>
+                  <p class="form-error" id="coach-email-error">Please enter a valid email</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="coach-phone">Phone *</label>
+                  <input type="tel" id="coach-phone" name="phone" class="form-input" required>
+                  <p class="form-error" id="coach-phone-error">Please enter your phone number</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="coach-sport">What event(s) do you coach? *</label>
+                <textarea id="coach-sport" name="sport" class="form-textarea" placeholder="e.g., Track & Field - Throws, CrossFit..." required></textarea>
+                <p class="form-error" id="coach-sport-error">Please tell us about your coaching</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred contact method *</label>
+                <div class="contact-prefs" id="coach-contact-prefs">
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-email" value="email" checked>
+                    <span>Email</span>
+                  </label>
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-text" value="text">
+                    <span>Text</span>
+                  </label>
+                  <label class="contact-pref">
+                    <input type="checkbox" name="contact-instagram" value="instagram" id="coach-contact-instagram">
+                    <span>Instagram</span>
+                  </label>
+                </div>
+                <p class="form-error" id="coach-contact-prefs-error">Please select at least one contact method</p>
+              </div>
+              <div class="instagram-field" id="coach-instagram-field">
+                <div class="form-group">
+                  <label class="form-label" for="coach-instagram">Instagram Username *</label>
+                  <input type="text" id="coach-instagram" name="instagram-username" class="form-input" placeholder="@username">
+                  <p class="form-error" id="coach-instagram-error">Please enter your Instagram username</p>
+                </div>
+              </div>
+              <p class="form-disclaimer">By submitting, you agree to our <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span class="spinner"></span>
+                <span class="btn-text">APPLY TO COACH — LIMITED SPOTS</span>
+              </button>
+            </form>
+            <div class="form-success" id="coach-success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <h3>YOU'RE IN.</h3>
+              <p>We'll be in touch soon with coach onboarding details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="data:image/png;base64,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" alt="Propare">
+            <span>PROPARE</span>
+          </div>
+          <p class="footer-tagline">Elite coaching, anywhere. Live sessions and video analysis with world-class athletes.</p>
+        </div>
+        <div class="footer-nav">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#athlete">For Athletes</a></li>
+            <li><a href="#coach">For Coaches</a></li>
+            <li><a href="mailto:support@propareapp.com">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h4 class="footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="terms.html" target="_blank" rel="noopener">Terms of Service</a></li>
+            <li><a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-connect">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/propareofficial/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@propareofficial" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
+            <a href="https://x.com/propareofficial" target="_blank" rel="noopener" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61580974605219" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Propare LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // NAVIGATION SCROLL EFFECT
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      const nav = document.getElementById('nav');
+      let lastScroll = 0;
+
+      function handleNavScroll() {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+      }
+
+      window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+      // Smooth scroll for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'));
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+          }
+        });
+      });
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // PARTICLE CONSTELLATION CANVAS
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      if (!prefersReducedMotion) {
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouseX = -1000;
+        let mouseY = -1000;
+        let animationId;
+
+        // Mobile detection - disable all interactive behavior on mobile
+        const isMobile = (
+          ('ontouchstart' in window) ||
+          (window.matchMedia('(pointer: coarse)').matches) ||
+          (window.matchMedia('(max-width: 768px)').matches)
+        );
+
+        // On mobile, lock dimensions once at load - never change
+        // This prevents ALL scroll/resize-related shifting
+        const lockedWidth = window.innerWidth;
+        const lockedHeight = window.innerHeight;
+
+        function resizeCanvas() {
+          if (isMobile) {
+            // On mobile, NEVER resize - use locked initial dimensions
+            // This completely eliminates scroll-related canvas shifting
+            return;
+          }
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+          particles = [];
+          const count = 70;
+          for (let i = 0; i < count; i++) {
+            particles.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              vx: (Math.random() - 0.5) * 0.2,
+              vy: (Math.random() - 0.5) * 0.2,
+              radius: 1 + Math.random() * 0.5
+            });
+          }
+        }
+
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Draw connections
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 140) {
+                const opacity = 0.15 * (1 - dist / 140);
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(164, 222, 2, ${opacity})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw and update particles
+          for (const p of particles) {
+            // Mouse repulsion
+            const dx = p.x - mouseX;
+            const dy = p.y - mouseY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 100) {
+              const force = (100 - dist) / 100;
+              const angle = Math.atan2(dy, dx);
+              p.x += Math.cos(angle) * force * 2;
+              p.y += Math.sin(angle) * force * 2;
+            }
+
+            // Update position
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Bounce off edges
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            // Keep in bounds
+            p.x = Math.max(0, Math.min(canvas.width, p.x));
+            p.y = Math.max(0, Math.min(canvas.height, p.y));
+
+            // Draw particle
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(164, 222, 2, 0.35)';
+            ctx.fill();
+          }
+
+          animationId = requestAnimationFrame(drawParticles);
+        }
+
+        // Initialize canvas
+        // On mobile, use locked dimensions that never change
+        if (isMobile) {
+          canvas.width = lockedWidth;
+          canvas.height = lockedHeight;
+        } else {
+          resizeCanvas();
+        }
+        createParticles();
+        drawParticles();
+
+        // Resize handler - completely disabled on mobile for stability
+        if (!isMobile) {
+          window.addEventListener('resize', () => {
+            resizeCanvas();
+            createParticles();
+          });
+        }
+
+        // Track mouse for repulsion (desktop only)
+        // On mobile, mouseX/mouseY stay at -1000 so particles drift without reacting
+        if (!isMobile) {
+          document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+          });
+
+          document.addEventListener('mouseleave', () => {
+            mouseX = -1000;
+            mouseY = -1000;
+          });
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // SCROLL REVEAL ANIMATIONS
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = entry.target.dataset.delay || 0;
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, prefersReducedMotion ? 0 : parseInt(delay));
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements
+      document.querySelectorAll('.coach-card, .signup-content, .signup-form-wrapper').forEach(el => {
+        observer.observe(el);
+      });
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // HOW IT WORKS SCROLL REVEAL
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      const hiwSection = document.querySelector('.how-it-works');
+      if (hiwSection) {
+        if (prefersReducedMotion) {
+          // Skip animation, show immediately
+          hiwSection.classList.add('visible');
+        } else {
+          const hiwObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                hiwObserver.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.15 });
+          hiwObserver.observe(hiwSection);
+        }
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // AURORA SPOTLIGHT EFFECT ON COACH CARDS
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      document.querySelectorAll('.coach-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--spotlight-x', `${x}%`);
+          card.style.setProperty('--spotlight-y', `${y}%`);
+        });
+      });
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // FORM HANDLING
+      // ═══════════════════════════════════════════════════════════════════════════
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      // Setup Athlete Form (with age/guardian logic)
+      function setupAthleteForm() {
+        const form = document.getElementById('athleteForm');
+        const success = document.getElementById('athlete-success');
+        const guardianFields = document.getElementById('athlete-guardian-fields');
+        const ageSelect = document.getElementById('athlete-age');
+        const instagramCheckbox = document.getElementById('athlete-contact-instagram');
+        const instagramField = document.getElementById('athlete-instagram-field');
+        const contactPrefs = document.getElementById('athlete-contact-prefs');
+        const contactPrefsError = document.getElementById('athlete-contact-prefs-error');
+
+        // Age select - show/hide guardian fields
+        ageSelect.addEventListener('change', () => {
+          if (ageSelect.value === 'no') {
+            guardianFields.classList.add('show');
+            guardianFields.querySelectorAll('input[name="guardian-name"], input[name="guardian-email"]').forEach(input => {
+              input.setAttribute('required', '');
+            });
+          } else {
+            guardianFields.classList.remove('show');
+            guardianFields.querySelectorAll('input').forEach(input => {
+              input.removeAttribute('required');
+              input.classList.remove('error');
+            });
+          }
+        });
+
+        // Instagram checkbox - show/hide username field
+        instagramCheckbox.addEventListener('change', () => {
+          if (instagramCheckbox.checked) {
+            instagramField.classList.add('show');
+            instagramField.querySelector('input').setAttribute('required', '');
+          } else {
+            instagramField.classList.remove('show');
+            const input = instagramField.querySelector('input');
+            input.removeAttribute('required');
+            input.classList.remove('error');
+            input.value = '';
+            const errorEl = document.getElementById('athlete-instagram-error');
+            if (errorEl) errorEl.classList.remove('show');
+          }
+        });
+
+        // Clear contact prefs error when any checkbox changes
+        contactPrefs.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.addEventListener('change', () => {
+            contactPrefs.classList.remove('error');
+            contactPrefsError.classList.remove('show');
+          });
+        });
+
+        // Form validation and submission
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          let isValid = true;
+
+          // Validate required fields
+          const requiredFields = form.querySelectorAll('[required]');
+          requiredFields.forEach(field => {
+            const errorEl = document.getElementById(`${field.id}-error`);
+
+            if (!field.value.trim()) {
+              field.classList.add('error');
+              if (errorEl) errorEl.classList.add('show');
+              isValid = false;
+            } else if (field.type === 'email' && !isValidEmail(field.value)) {
+              field.classList.add('error');
+              if (errorEl) errorEl.classList.add('show');
+              isValid = false;
+            } else {
+              field.classList.remove('error');
+              if (errorEl) errorEl.classList.remove('show');
+            }
+          });
+
+          // Validate contact preferences (at least one selected)
+          const checkedPrefs = contactPrefs.querySelectorAll('input[type="checkbox"]:checked');
+          if (checkedPrefs.length === 0) {
+            contactPrefs.classList.add('error');
+            contactPrefsError.classList.add('show');
+            isValid = false;
+          } else {
+            contactPrefs.classList.remove('error');
+            contactPrefsError.classList.remove('show');
+          }
+
+          if (!isValid) return;
+
+          // Show loading state
+          const submitBtn = form.querySelector('.btn-submit');
+          submitBtn.classList.add('loading');
+
+          try {
+            const formData = new FormData(form);
+            await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString()
+            });
+
+            form.style.display = 'none';
+            success.classList.add('show');
+          } catch (error) {
+            console.error('Form submission error:', error);
+            submitBtn.classList.remove('loading');
+            alert('Something went wrong. Please try again.');
+          }
+        });
+
+        // Clear error on input
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+          field.addEventListener('input', () => {
+            field.classList.remove('error');
+            const errorEl = document.getElementById(`${field.id}-error`);
+            if (errorEl) errorEl.classList.remove('show');
+          });
+        });
+      }
+
+      // Setup Coach Form (no age/guardian logic)
+      function setupCoachForm() {
+        const form = document.getElementById('coachForm');
+        const success = document.getElementById('coach-success');
+        const instagramCheckbox = document.getElementById('coach-contact-instagram');
+        const instagramField = document.getElementById('coach-instagram-field');
+        const contactPrefs = document.getElementById('coach-contact-prefs');
+        const contactPrefsError = document.getElementById('coach-contact-prefs-error');
+
+        // Instagram checkbox - show/hide username field
+        instagramCheckbox.addEventListener('change', () => {
+          if (instagramCheckbox.checked) {
+            instagramField.classList.add('show');
+            instagramField.querySelector('input').setAttribute('required', '');
+          } else {
+            instagramField.classList.remove('show');
+            const input = instagramField.querySelector('input');
+            input.removeAttribute('required');
+            input.classList.remove('error');
+            input.value = '';
+            const errorEl = document.getElementById('coach-instagram-error');
+            if (errorEl) errorEl.classList.remove('show');
+          }
+        });
+
+        // Clear contact prefs error when any checkbox changes
+        contactPrefs.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+          cb.addEventListener('change', () => {
+            contactPrefs.classList.remove('error');
+            contactPrefsError.classList.remove('show');
+          });
+        });
+
+        // Form validation and submission
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          let isValid = true;
+
+          // Validate required fields
+          const requiredFields = form.querySelectorAll('[required]');
+          requiredFields.forEach(field => {
+            const errorEl = document.getElementById(`${field.id}-error`);
+
+            if (!field.value.trim()) {
+              field.classList.add('error');
+              if (errorEl) errorEl.classList.add('show');
+              isValid = false;
+            } else if (field.type === 'email' && !isValidEmail(field.value)) {
+              field.classList.add('error');
+              if (errorEl) errorEl.classList.add('show');
+              isValid = false;
+            } else {
+              field.classList.remove('error');
+              if (errorEl) errorEl.classList.remove('show');
+            }
+          });
+
+          // Validate contact preferences (at least one selected)
+          const checkedPrefs = contactPrefs.querySelectorAll('input[type="checkbox"]:checked');
+          if (checkedPrefs.length === 0) {
+            contactPrefs.classList.add('error');
+            contactPrefsError.classList.add('show');
+            isValid = false;
+          } else {
+            contactPrefs.classList.remove('error');
+            contactPrefsError.classList.remove('show');
+          }
+
+          if (!isValid) return;
+
+          // Show loading state
+          const submitBtn = form.querySelector('.btn-submit');
+          submitBtn.classList.add('loading');
+
+          try {
+            const formData = new FormData(form);
+            await fetch('/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              body: new URLSearchParams(formData).toString()
+            });
+
+            form.style.display = 'none';
+            success.classList.add('show');
+          } catch (error) {
+            console.error('Form submission error:', error);
+            submitBtn.classList.remove('loading');
+            alert('Something went wrong. Please try again.');
+          }
+        });
+
+        // Clear error on input
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+          field.addEventListener('input', () => {
+            field.classList.remove('error');
+            const errorEl = document.getElementById(`${field.id}-error`);
+            if (errorEl) errorEl.classList.remove('show');
+          });
+        });
+      }
+
+      // Initialize forms
+      setupAthleteForm();
+      setupCoachForm();
+
+    })();
+  </script>
+</body>
+</html>
