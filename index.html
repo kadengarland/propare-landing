@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Propare | Elite Coaching, Anywhere</title>
   <meta name="description" content="Find and train with elite coaches worldwide through live 1:1 sessions or video analysis. Propare is the remote coaching marketplace for serious athletes.">
+  <link rel="icon" href="images/favicon.png">
 
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,13 +28,13 @@
       --color-base: #060608;
       --color-surface: #0A0A0F;
       --color-surface-elevated: #0F0F14;
-      --color-accent: #A4DE02;
-      --color-accent-dim: rgba(164, 222, 2, 0.15);
+      --color-accent: #059669;
+      --color-accent-dim: rgba(5, 150, 105, 0.15);
       --color-text: #FFFFFF;
       --color-text-muted: rgba(255, 255, 255, 0.6);
       --color-text-subtle: rgba(255, 255, 255, 0.4);
       --color-border: rgba(255, 255, 255, 0.08);
-      --color-green-tint: rgba(26, 93, 62, 0.15);
+      --color-green-tint: rgba(5, 150, 105, 0.15);
       --color-blue-tint: rgba(30, 64, 120, 0.15);
       --color-error: #EF4444;
       --color-success: #22C55E;
@@ -357,13 +358,13 @@
 
     .btn-primary {
       background: var(--color-accent);
-      color: var(--color-base);
+      color: #FFFFFF;
     }
 
     .btn-primary:hover {
-      background: #B8F218;
+      background: #047857;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(164, 222, 2, 0.3);
+      box-shadow: 0 8px 24px rgba(5, 150, 105, 0.3);
     }
 
     .btn-secondary {
@@ -375,7 +376,7 @@
     .btn-secondary:hover {
       background: var(--color-accent-dim);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(164, 222, 2, 0.15);
+      box-shadow: 0 8px 24px rgba(5, 150, 105, 0.15);
     }
 
     .scroll-indicator {
@@ -471,7 +472,7 @@
       font-family: var(--font-display);
       font-size: 14px;
       letter-spacing: 0.2em;
-      color: #A4DE02;
+      color: #059669;
       margin-bottom: 16px;
     }
 
@@ -509,7 +510,7 @@
       font-family: var(--font-display);
       font-size: 13px;
       letter-spacing: 0.2em;
-      color: #A4DE02;
+      color: #059669;
       margin-bottom: 8px;
     }
 
@@ -548,7 +549,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse at center, rgba(164,222,2,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(5,150,105,0.08) 0%, transparent 70%);
       z-index: 0;
       pointer-events: none;
     }
@@ -570,7 +571,7 @@
       background: #0A0A0F;
       border: 1.5px solid rgba(255,255,255,0.12);
       border-radius: 44px;
-      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(164,222,2,0.25), 0 32px 64px rgba(0,0,0,0.6), 0 0 40px rgba(164,222,2,0.06);
+      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(5,150,105,0.25), 0 32px 64px rgba(0,0,0,0.6), 0 0 40px rgba(5,150,105,0.06);
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -631,7 +632,7 @@
     .phone-topbar span {
       font-family: var(--font-display);
       font-size: 14px;
-      color: #A4DE02;
+      color: #059669;
     }
 
     .phone-home-indicator {
@@ -666,14 +667,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(164,222,2,0.03);
-      border: 1px solid rgba(164,222,2,0.08);
+      background: rgba(5,150,105,0.03);
+      border: 1px solid rgba(5,150,105,0.08);
       border-radius: 10px;
       pointer-events: none;
     }
 
     .video-box.coach-box {
-      box-shadow: inset 0 0 0 1px rgba(164,222,2,0.2);
+      box-shadow: inset 0 0 0 1px rgba(5,150,105,0.2);
     }
 
     .video-box-label {
@@ -724,8 +725,8 @@
     }
 
     .session-info-bar {
-      background: rgba(164,222,2,0.05);
-      border: 1px solid rgba(164,222,2,0.1);
+      background: rgba(5,150,105,0.05);
+      border: 1px solid rgba(5,150,105,0.1);
       border-radius: 8px;
       margin: 0 12px;
       padding: 8px 12px;
@@ -743,7 +744,7 @@
     .session-info-left svg {
       width: 16px;
       height: 16px;
-      color: #A4DE02;
+      color: #059669;
     }
 
     .session-info-left span {
@@ -755,7 +756,7 @@
     .session-duration {
       font-family: var(--font-body);
       font-size: 11px;
-      color: #A4DE02;
+      color: #059669;
       font-weight: 600;
     }
 
@@ -798,7 +799,7 @@
     .chat-label {
       font-family: var(--font-body);
       font-size: 9px;
-      color: #A4DE02;
+      color: #059669;
       letter-spacing: 0.1em;
       margin-bottom: 4px;
     }
@@ -1036,9 +1037,9 @@
       z-index: 2;
       background: radial-gradient(
         400px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
-        rgba(164, 222, 2, 0.12),
-        rgba(164, 222, 2, 0.06) 40%,
-        rgba(164, 222, 2, 0.02) 60%,
+        rgba(5, 150, 105, 0.12),
+        rgba(5, 150, 105, 0.06) 40%,
+        rgba(5, 150, 105, 0.02) 60%,
         transparent 100%
       );
     }
@@ -1576,7 +1577,7 @@
 
     .footer-social a:hover {
       background: var(--color-accent);
-      color: var(--color-base);
+      color: #FFFFFF;
     }
 
     .footer-social svg {
@@ -1865,7 +1866,7 @@
       font-size: 15px;
       letter-spacing: 0.15em;
       color: var(--color-accent);
-      border: 1px solid rgba(164, 222, 2, 0.25);
+      border: 1px solid rgba(5, 150, 105, 0.25);
       border-radius: 999px;
       padding: 6px 20px;
       margin-bottom: 32px;
@@ -1900,8 +1901,8 @@
     .ticker {
       width: 100%;
       background: #0F0F14;
-      border-top: 1px solid rgba(164, 222, 2, 0.3);
-      border-bottom: 1px solid rgba(164, 222, 2, 0.3);
+      border-top: 1px solid rgba(5, 150, 105, 0.3);
+      border-bottom: 1px solid rgba(5, 150, 105, 0.3);
       padding: 14px 0;
       overflow: hidden;
     }
@@ -1910,7 +1911,7 @@
       display: flex;
       width: max-content;
       will-change: transform;
-      animation: ticker-scroll 35s linear infinite;
+      animation: ticker-scroll 45s linear infinite;
     }
 
     @keyframes ticker-scroll {
@@ -1939,7 +1940,7 @@
     }
 
     .ticker-dot {
-      color: rgba(164, 222, 2, 0.4);
+      color: rgba(5, 150, 105, 0.4);
       padding: 0 4px;
     }
 
@@ -2003,7 +2004,7 @@
       background: #0A0A0F;
       border: 1.5px solid rgba(255, 255, 255, 0.12);
       border-radius: 40px;
-      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(164, 222, 2, 0.15), 0 40px 80px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 0 6px #0F0F14, 0 0 0 7px rgba(5, 150, 105, 0.15), 0 40px 80px rgba(0, 0, 0, 0.6);
       position: relative;
       overflow: hidden;
     }
@@ -2136,7 +2137,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: rgba(164, 222, 2, 0.8);
+      background: rgba(5, 150, 105, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2149,9 +2150,9 @@
     }
 
     @keyframes playBtnPulse {
-      0% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 0 rgba(164, 222, 2, 0)); }
-      50% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(164, 222, 2, 0.8)); }
-      100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 4px rgba(164, 222, 2, 0.4)); }
+      0% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 0 rgba(5, 150, 105, 0)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(5, 150, 105, 0.8)); }
+      100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 4px rgba(5, 150, 105, 0.4)); }
     }
 
     .hiw-play-btn::after {
@@ -2214,7 +2215,7 @@
 
     .hiw-timestamp {
       background: var(--color-accent);
-      color: #000;
+      color: #FFFFFF;
       font-family: var(--font-display);
       font-size: 11px;
       padding: 3px 8px;
@@ -2527,6 +2528,460 @@
         width: 100% !important;
       }
     }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FAQ SECTION
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.faq {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-bg-line {
+  position: absolute;
+  top: 0;
+  right: 180px;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.faq-bg-line2 {
+  position: absolute;
+  top: 0;
+  right: 480px;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+.faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.faq-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 0;
+  align-items: end;
+}
+
+.faq-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faq-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.faq-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6.5vw, 84px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.faq-title em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.faq-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.faq-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.8;
+  max-width: 380px;
+}
+
+.faq-email-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq-email-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: faq-blink 2s ease infinite;
+  flex-shrink: 0;
+}
+
+@keyframes faq-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.faq-email-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.faq-email-text a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(5, 150, 105, 0.3);
+  transition: border-color 150ms ease;
+}
+
+.faq-email-text a:hover {
+  border-color: var(--color-accent);
+  opacity: 1;
+}
+
+.faq-nav {
+  display: flex;
+  gap: 0;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+
+.faq-tab {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  border-top: 2px solid transparent;
+  margin-top: -1px;
+  transition: all 150ms ease;
+  white-space: nowrap;
+}
+
+.faq-tab:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.faq-tab.active {
+  color: #fff;
+  border-top-color: var(--color-accent);
+}
+
+.faq-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.faq-panel {
+  display: none;
+}
+
+.faq-panel.active {
+  display: block;
+}
+
+.faq-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 200ms ease;
+  position: relative;
+}
+
+.faq-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: var(--color-accent);
+  transition: width 200ms ease;
+}
+
+.faq-item.open::after {
+  width: 2px;
+}
+
+.faq-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.15);
+  padding: 28px 0 28px 16px;
+  transition: color 200ms ease;
+  align-self: flex-start;
+}
+
+.faq-item.open .faq-num {
+  color: var(--color-accent);
+}
+
+.faq-main-col {
+  padding: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.faq-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 40px 24px 32px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-trigger:hover .faq-q {
+  color: #fff;
+}
+
+.faq-q {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  transition: color 200ms ease;
+  flex: 1;
+}
+
+.faq-item.open .faq-q {
+  color: #fff;
+}
+
+.faq-chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+}
+
+.faq-chevron::before,
+.faq-chevron::after {
+  content: '';
+  position: absolute;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1px;
+  transition: all 240ms ease;
+  width: 8px;
+  top: 7px;
+}
+
+.faq-chevron::before {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: right center;
+}
+
+.faq-chevron::after {
+  right: 0;
+  transform: rotate(-45deg);
+  transform-origin: left center;
+}
+
+.faq-item.open .faq-chevron::before {
+  transform: rotate(-45deg);
+  background: var(--color-accent);
+}
+
+.faq-item.open .faq-chevron::after {
+  transform: rotate(45deg);
+  background: var(--color-accent);
+}
+
+.faq-body-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 380ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-body-wrap {
+  max-height: 600px;
+}
+
+.faq-answer {
+  padding: 0 40px 28px 32px;
+}
+
+.faq-text {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.9;
+  max-width: 640px;
+}
+
+.faq-text strong {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+.faq-text a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(5, 150, 105, 0.3);
+  transition: border-color 150ms ease;
+}
+
+.faq-text a:hover {
+  border-color: var(--color-accent);
+  opacity: 1;
+}
+
+.faq-footer-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.faq-footer-spacer {
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.faq-footer-inner {
+  padding: 40px 40px 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.faq-footer-text h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.faq-footer-text p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.faq-footer-btn {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  padding: 14px 28px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: background 150ms ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.faq-footer-btn:hover {
+  background: #047857;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .faq-header {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .faq-item {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-num {
+    display: none;
+  }
+
+  .faq-main-col {
+    border-left: none;
+  }
+
+  .faq-footer-row {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-footer-spacer {
+    display: none;
+  }
+
+  .faq-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px 0;
+  }
+
+  .faq-trigger {
+    padding: 20px 24px;
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px;
+  }
+
+  .faq-nav {
+    overflow-x: auto;
+    padding: 0 24px;
+  }
+
+  .faq-tab {
+    padding: 14px 16px;
+    font-size: 11px;
+  }
+
+  .faq-container {
+    padding: 0 24px;
+  }
+
+  .faq-bg-line,
+  .faq-bg-line2 {
+    display: none;
+  }
+
+  .faq-body {
+    padding: 0 24px;
+  }
+}
+
+.faq-section-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.faq-section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   </style>
 </head>
 <body>
@@ -2584,7 +3039,7 @@
       <p class="hero-proof">Train with NCAA and pro athletes.</p>
       <div class="waitlist-counter">
         <span class="waitlist-dot"></span>
-        <span>JOIN <span id="waitlist-count">12</span> ATHLETES ALREADY ON THE WAITLIST</span>
+        <span>JOIN <span id="waitlist-count">24</span> ATHLETES ALREADY ON THE WAITLIST</span>
       </div>
       <div class="hero-ctas">
         <a href="#athlete" class="btn btn-primary">I'M AN ATHLETE</a>
@@ -2791,12 +3246,12 @@
               <div class="video-player-area">
                 <!-- Annotation Arrow -->
                 <svg class="video-annotation-arrow" viewBox="0 0 80 60" fill="none">
-                  <path d="M10 50 Q 30 20, 70 15" stroke="#A4DE02" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
-                  <path d="M65 10 L 70 15 L 63 18" stroke="#A4DE02" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+                  <path d="M10 50 Q 30 20, 70 15" stroke="#059669" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+                  <path d="M65 10 L 70 15 L 63 18" stroke="#059669" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.9"/>
                 </svg>
                 <!-- Annotation Circle -->
                 <svg class="video-annotation-circle" viewBox="0 0 30 30" fill="none">
-                  <circle cx="15" cy="15" r="12" stroke="#A4DE02" stroke-width="1.5" fill="none" opacity="0.9"/>
+                  <circle cx="15" cy="15" r="12" stroke="#059669" stroke-width="1.5" fill="none" opacity="0.9"/>
                 </svg>
                 <span class="playback-speed-badge">0.5x</span>
                 <span class="video-filename">shot_put_competition.mp4</span>
@@ -2914,7 +3369,7 @@
         <div class="signup-content">
           <p class="section-eyebrow">For Athletes</p>
           <h2 class="signup-title">UNLOCK YOUR POTENTIAL.</h2>
-          <p class="signup-desc">Train with elite coaches from anywhere in the world. Whether you need live 1:1 sessions or detailed video analysis, Propare connects you with athletes who've competed at the highest levels.</p>
+          <p class="signup-desc">Train with elite coaches from anywhere in the world. Whether you need live 1:1 sessions or detailed video analysis, Propare connects you with coaches who've competed at the highest levels.</p>
           <ul class="signup-benefits">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2949,6 +3404,7 @@
               <p class="sr-only">
                 <label>Don't fill this out: <input name="bot-field"></label>
               </p>
+              <input type="text" name="website" id="athlete-website" style="position: absolute; left: -9999px; opacity: 0;" tabindex="-1" autocomplete="off">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="athlete-first">First Name *</label>
@@ -3095,6 +3551,7 @@
               <p class="sr-only">
                 <label>Don't fill this out: <input name="bot-field"></label>
               </p>
+              <input type="text" name="website" id="coach-website" style="position: absolute; left: -9999px; opacity: 0;" tabindex="-1" autocomplete="off">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="coach-first">First Name *</label>
@@ -3170,6 +3627,280 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════════
+       FAQ SECTION
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="faq faq-section-reveal" id="faq">
+
+    <div class="faq-container">
+      <div class="faq-header">
+        <div>
+          <p class="faq-label">COMMON QUESTIONS</p>
+          <h2 class="faq-title">BEFORE YOU<br>SIGN UP.</h2>
+        </div>
+        <div class="faq-right">
+          <p class="faq-desc">Everything you need to know about Propare before getting early access. Can't find what you're looking for?</p>
+          <div class="faq-email-row">
+            <span class="faq-email-dot"></span>
+            <span class="faq-email-text">Reach us at <a href="mailto:support&#64;propareapp&#46;com">support&#64;propareapp&#46;com</a> — we respond within 24 hours.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="faq-nav">
+      <button class="faq-tab active" onclick="faqSwitchTab('general', this)">GENERAL</button>
+      <button class="faq-tab" onclick="faqSwitchTab('sessions', this)">HOW IT WORKS</button>
+      <button class="faq-tab" onclick="faqSwitchTab('coaches', this)">THE COACHES</button>
+      <button class="faq-tab" onclick="faqSwitchTab('pricing', this)">PRICING</button>
+      <button class="faq-tab" onclick="faqSwitchTab('safety', this)">SAFETY</button>
+      <button class="faq-tab" onclick="faqSwitchTab('forcoaches', this)">FOR COACHES</button>
+    </nav>
+
+    <div class="faq-body">
+
+      <!-- GENERAL -->
+      <div class="faq-panel active" id="faq-tab-general">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What is Propare?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Propare is an online coaching marketplace built by NCAA athletes. We connect youth and high school athletes with verified collegiate and professional coaches for live 1:1 sessions and video analysis feedback — no matter where you live.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Who is Propare for?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Propare is built for youth and high school athletes who are serious about improving. If you've been limited by who's in your area, Propare gives you access to elite coaches you couldn't reach locally. It's also built for parents who want a safe, verified coaching option for their athlete.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What sports does Propare support?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Propare is launching with <strong>track and field</strong> — throws, sprints, hurdles, jumps, pole vault, and strength development. More sports will be added as the platform grows.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Is Propare affiliated with any university or athletic department?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">No. Propare is completely independent and is not affiliated with or endorsed by any university, athletic department, or governing body.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">05</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">When does Propare launch? What does early access mean?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">We're in the final stages before launch. Signing up now puts you on the early access waitlist — you'll be among the first athletes and coaches notified when the platform opens. Spots are limited for our initial launch group.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <div class="faq-panel" id="faq-tab-sessions">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How does coaching on Propare actually work?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">There are two ways to get coached. <strong>Live 1:1 Sessions</strong> are real-time video calls where a coach works with you directly — technique, lifting, film review, mentorship, whatever you need. <strong>Video Analysis Sessions</strong> let you upload a training clip and your coach delivers timestamped voice notes, drawings, and corrections tied to the exact moments in your footage — no scheduling required.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What do I need for a live session?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">A device with a camera and microphone, a stable internet connection (at least 10 Mbps), and <strong>Microsoft Teams downloaded</strong> before your session. That's it.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How does video analysis feedback get delivered?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">You upload a single training clip. Your coach reviews it using Propare's built-in tools — frame-by-frame scrubbing, timestamped voice notes, and drawing tools — and delivers feedback within <strong>48 hours</strong>. Once delivered, the session is locked as a permanent replay you can rewatch anytime.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What video format should I use for uploads?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text"><strong>1080p at 60fps</strong> is ideal. One consistent angle works best — fill about two thirds of the frame. If you're not sure what angle to use, ask your coach before filming.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">05</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How do I book a session?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Browse coach profiles, pick your session type, choose an available time, and complete payment through Stripe. You'll get a confirmation with everything you need. For video analysis, just upload your clip whenever you're ready — no scheduling required.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THE COACHES -->
+      <div class="faq-panel" id="faq-tab-coaches">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Who are the coaches on Propare?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Every coach on Propare has competed at the NCAA or professional level. Our launch group includes national record holders, NCAA All-Americans, and top-ranked collegiate and professional athletes in track and field.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How are coaches verified?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Every coach is manually reviewed by the Propare team before they can take bookings. We verify athletic background and credentials, review the profile, require Stripe identity verification, and confirm agreement to Propare's safety and conduct standards. Propare does not allow open public coach sign-ups during MVP — every coach in the launch group is personally vetted.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How do I find the right coach for my event?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Browse by sport, event, or specialty. Every profile shows athletic background, what they coach, session types, pricing, and reviews from completed sessions — everything you need to find the right fit before you book.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Do coaches set their own pricing and session structure?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Yes. Coaches set their own rates, session lengths, and what's included. You'll see all of it on their profile before committing to anything.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div class="faq-panel" id="faq-tab-pricing">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How does payment work?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Payment is made at the time of booking through <strong>Stripe</strong>, which accepts most major debit and credit cards. Your payment is held securely and only released to the coach after the session is completed.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Are there any fees on top of the session price?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Stripe charges a standard processing fee of <strong>2.9% + $0.30 per transaction</strong>. This is shown at checkout before you confirm — no surprises.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What is the refund policy?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">If a coach cancels or doesn't show up, you get a <strong>full refund automatically</strong>. If you cancel at least 24 hours before your session, you get a refund minus the Stripe processing fee. Cancellations inside 24 hours or no-shows are not eligible for a refund. If a verified technical issue prevented the session, contact <a href="mailto:support&#64;propareapp&#46;com">support&#64;propareapp&#46;com</a> within 72 hours and we'll review it.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Can I reschedule?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Yes, as long as you reschedule at least 24 hours before the session. Inside that window it may be treated as a late cancellation.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">05</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Do all payments have to go through Propare?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Yes. All payments must go through the platform. Off-platform payments through Venmo, CashApp, PayPal, or anything else are prohibited and may result in removal from Propare.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAFETY -->
+      <div class="faq-panel" id="faq-tab-safety">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">How does Propare protect athletes — especially minors?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">All sessions happen inside the Propare platform — personal contact information is never shared between athletes and coaches. Athletes under 18 must have a parent or guardian linked to their account. Every coach is manually vetted and agrees to Propare's safety and conduct standards before being approved. All communication is logged inside the platform.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What if my athlete is under 18?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Athletes under 18 must have a parent or guardian linked to their account during sign-up. Parents can monitor bookings, view session history, and communicate through the platform. Parents are also welcome to sit nearby or listen in during live sessions.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Can coaches contact athletes outside of Propare?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">No. All communication must stay inside the platform. Coaches are prohibited from requesting personal contact information or communicating through any outside channel. Violations result in immediate removal from Propare.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What if something feels wrong during a session?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Leave the session immediately. Report it through Propare or email <a href="mailto:support&#64;propareapp&#46;com">support&#64;propareapp&#46;com</a>. Reports are reviewed quickly and a coach's account may be suspended while the situation is investigated.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">05</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Does Propare sell my data?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">No. Propare does not sell or share personal data with third parties. Your information is used only to operate the platform and keep sessions safe. See our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> for full details.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOR COACHES -->
+      <div class="faq-panel" id="faq-tab-forcoaches">
+        <div class="faq-item open">
+          <span class="faq-num">01</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Is coaching on Propare allowed under NCAA rules?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Yes. Coaches are paid for a legitimate coaching service — not endorsements or NIL promotions. Propare is completely independent from any university or athletic department. Each coach is responsible for confirming their participation complies with their own school's rules.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">02</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Is this considered NIL activity?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Coaching on Propare is payment for a legitimate service, not a traditional NIL deal. That said, some schools classify any outside income by student athletes as NIL activity for disclosure purposes. Check your school's policy and report income if required.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">03</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">What does Propare take from coach earnings?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">Live video sessions: <strong>Propare takes 10%, you keep 90%.</strong> Video analysis sessions: <strong>Propare takes 20%, you keep 80%.</strong> Stripe also deducts their standard processing fee of 2.9% + $0.30 before payout. Payouts are processed automatically through Stripe, typically within 2 business days.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">04</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Can coaches use their school's logo or wear team gear?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">No. Coaches can identify their school by name but cannot use university logos, uniforms, marks, or facilities in any Propare content or sessions without written permission from their institution.</div></div></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <span class="faq-num">05</span>
+          <div class="faq-main-col">
+            <button class="faq-trigger" onclick="faqToggle(this)"><span class="faq-q">Who can coach on Propare?</span><span class="faq-chevron"></span></button>
+            <div class="faq-body-wrap"><div class="faq-answer"><div class="faq-text">NCAA athletes, professional athletes, and certified coaches. Every coach goes through Propare's manual verification process before being approved. During our MVP phase we are not accepting open public applications — if you're interested, sign up on the waitlist and we'll reach out.</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="faq-footer-row">
+      <div class="faq-footer-spacer"></div>
+      <div class="faq-footer-inner">
+        <div class="faq-footer-text">
+          <h4>STILL HAVE A QUESTION?</h4>
+          <p>Our team responds within 24 hours.</p>
+        </div>
+        <a href="mailto:support&#64;propareapp&#46;com" class="faq-footer-btn">EMAIL SUPPORT</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
        FOOTER
        ═══════════════════════════════════════════════════════════════════════════ -->
   <footer class="footer">
@@ -3187,7 +3918,8 @@
           <ul class="footer-links">
             <li><a href="#athlete">For Athletes</a></li>
             <li><a href="#coach">For Coaches</a></li>
-            <li><a href="mailto:support@propareapp.com">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="mailto:support&#64;propareapp&#46;com">Contact</a></li>
           </ul>
         </div>
         <div class="footer-nav">
@@ -3338,11 +4070,11 @@
               const dist = Math.sqrt(dx * dx + dy * dy);
 
               if (dist < 140) {
-                const opacity = 0.15 * (1 - dist / 140);
+                const opacity = 0.3 * (1 - dist / 140);
                 ctx.beginPath();
                 ctx.moveTo(particles[i].x, particles[i].y);
                 ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(164, 222, 2, ${opacity})`;
+                ctx.strokeStyle = `rgba(5, 150, 105, ${opacity})`;
                 ctx.lineWidth = 0.5;
                 ctx.stroke();
               }
@@ -3378,7 +4110,7 @@
             // Draw particle
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(164, 222, 2, 0.35)';
+            ctx.fillStyle = 'rgba(5, 150, 105, 0.6)';
             ctx.fill();
           }
 
@@ -3544,6 +4276,9 @@
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
+          // Honeypot spam check
+          if (document.getElementById('athlete-website').value) return;
+
           let isValid = true;
 
           // Validate required fields
@@ -3646,6 +4381,9 @@
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
 
+          // Honeypot spam check
+          if (document.getElementById('coach-website').value) return;
+
           let isValid = true;
 
           // Validate required fields
@@ -3714,6 +4452,39 @@
       // Initialize forms
       setupAthleteForm();
       setupCoachForm();
+
+      const faqSection = document.querySelector('.faq-section-reveal');
+      if (faqSection) {
+        const faqObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              faqObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        faqObserver.observe(faqSection);
+      }
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // FAQ ACCORDION + TAB SWITCHING
+      // ═══════════════════════════════════════════════════════════════════════════
+
+
+      window.faqToggle = function(btn) {
+        const item = btn.closest('.faq-item');
+        const panel = item.closest('.faq-panel');
+        const isOpen = item.classList.contains('open');
+        panel.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      };
+
+      window.faqSwitchTab = function(id, btn) {
+        document.querySelectorAll('.faq-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('faq-tab-' + id).classList.add('active');
+      };
 
     })();
   </script>
