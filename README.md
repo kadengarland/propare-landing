@@ -1,46 +1,62 @@
 # Propare Landing Page
 
-Live site: [proparesignup.com](https://proparesignup.com)
+Live: [proparesignup.com](https://proparesignup.com)
 
 Marketing and waitlist page for [Propare](https://propareapp.com), a coaching 
 marketplace connecting athletes with verified coaches through live 1:1 sessions 
-and video analysis.
+and video analysis. Built as a multi-file static site and deployed on Netlify.
 
-## Overview
+## Sections
 
-Built as a single HTML file and deployed on Netlify. The page handles both 
-athlete and coach signups, routes form data into Google Sheets via Zapier, and 
-triggers email notifications on every submission.
+**Hero**
+Particle animation background, "ELITE COACHING, ANYWHERE." headline, live 
+waitlist counter, and a scrolling ticker bar highlighting platform values.
 
-## Features
+**How It Works**
+Two side-by-side phone mockups. Left phone shows a live 1:1 coaching session 
+with real-time video call UI and coach messaging. Right phone shows a video 
+analysis session with annotated video, timeline scrubber, playback controls, 
+and coach voice note cards.
 
-### Waitlist Forms
-- Separate signup flows for athletes and coaches
-- Parent/guardian conditional flow for athletes under 18
-- Email notifications on every submission via Netlify Forms
-- Form data auto-populated into Google Sheets via Zapier
+**Coach Social Proof**
+Three featured coaches with credentials and sport specialization:
+- Shaquille Emanuelson — Netherlands National Record Holder, Discus
+- Garrett Kaaland — #2 All-Time Indoor 200m - 19.95, 9.93 100m
+- Texas Tanner — All-American in All Four Throwing Events
 
-### Sections
-- Hero with live waitlist counter and scrolling ticker bar
-- How It Works — two side-by-side phone mockups showing a live session and a 
-  video analysis session
-- Coach social proof cards featuring NCAA All-Americans and nationally ranked athletes
-- Athlete and coach signup forms
-- FAQ section
+**Athlete Signup**
+Netlify form with conditional parent/guardian flow that activates for 
+athletes under 18. Fields include name, email, phone, sport/event, and 
+preferred contact method. Form acknowledgment links to Terms of Service 
+and Privacy Policy.
+
+**Coach Signup**
+Separate Netlify form for coach applications with its own email notification 
+and Zapier routing.
+
+**FAQ**
+Accordion-style FAQ section covering platform basics, session types, 
+payments, and eligibility.
+
+**Legal**
+Dedicated `terms.html` and `privacy.html` pages linked from the footer and 
+from form acknowledgment text. All three files cross-link correctly.
 
 ## Stack
 
-- Single HTML file — Tailwind CSS via CDN
-- Netlify Forms for form handling and email notifications
-- Zapier for routing submissions to Google Sheets
+- Multi-file static site — HTML, Tailwind CSS via CDN
+- Netlify Forms with email notifications for athlete and coach submissions
+- Zapier for routing form data to Google Sheets (separate sheets per form)
+- Propare logo embedded as base64
 - Deployed via Netlify Drop
 
-## Brand
+## Design
 
-Primary color: Emerald 600 `#059669`  
-Typography: Inter  
-Theme: Dark
+- Dark theme with Emerald 600 `#059669` as the primary brand color
+- Inter typography
+- Scroll reveal animations throughout
+- Fully mobile-optimized
 
 ## Repo
 
-Source: [`github.com/kadengarland/propare-landing`](https://github.com/kadengarland/propare-landing)
+[github.com/kadengarland/propare-landing](https://github.com/kadengarland/propare-landing)
