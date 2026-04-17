@@ -9,8 +9,10 @@ and video analysis. Built as a multi-file static site and deployed on Netlify.
 ## Sections
 
 **Hero**
-Particle animation background, "ELITE COACHING, ANYWHERE." headline, and a 
-scrolling ticker bar highlighting platform values.
+Interactive particle network background — particles float across the canvas, 
+connect with lines when in proximity, and repel from the cursor on hover. 
+"ELITE COACHING, ANYWHERE." headline with dual CTAs routing to each signup form.
+Scrolling ticker bar runs below the hero.
 
 **How It Works**
 Two side-by-side phone mockups running a fully coordinated, looping animation 
