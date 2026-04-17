@@ -13,6 +13,7 @@ Waitlist landing page for [Propare](https://proparesignup.com) — a two-sided c
 ## Stack
 - Single HTML file (Tailwind CSS via CDN)
 - Netlify Forms for form handling
+- Zapier for routing form submissions → Google Sheets
 - Netlify Drop for deployment
 
 ## Deployment
