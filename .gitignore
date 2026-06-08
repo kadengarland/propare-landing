@@ -1,0 +1,14 @@
+# Local dev artifacts / screenshots
+*.png
+!images/favicon.png
+screenshots/
+.playwright-mcp/
+
+# Backups & tooling output
+*.bak
+repomix-output.xml
+
+# Windows
+*.lnk
+Thumbs.db
+Desktop.ini
