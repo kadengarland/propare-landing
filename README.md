@@ -79,7 +79,7 @@ social accounts.
 
 ## Security
 
-- Honeypot field on athlete signup form for bot filtering
+- Honeypot field on both athlete and coach signup forms for bot filtering
 - All form data routed through Netlify's infrastructure
 - No sensitive data stored client-side
 
