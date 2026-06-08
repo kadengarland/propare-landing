@@ -17,11 +17,12 @@ links to all Propare accounts.
 Interactive particle constellation background — particles float, connect with
 lines when in proximity, and repel from the cursor on hover. Staggered
 fade-in animations on load. "ELITE COACHING, ANYWHERE." headline with dual
-CTAs routing to each signup form.
+CTAs routing to each signup form, plus a quick link straight to the technique
+breakdown uploader.
 
 **Ticker Bar**
-Scrolling marquee of platform phrases running between the hero and How It Works
-section.
+Scrolling marquee of platform phrases ("UPLOAD YOUR FILM," etc.) running
+between the hero and How It Works section.
 
 **How It Works**
 Two floating phone mockups running a fully coordinated, looping animation
@@ -52,8 +53,21 @@ Three featured coaches with credentials and sport specialization:
 **Athlete Signup**
 Netlify form with a conditional parent/guardian flow that activates for
 athletes under 18. Fields include name, email, phone, sport/event, and
-preferred contact method. Form acknowledgment links to Terms of Service
-and Privacy Policy.
+preferred contact method. Includes an optional **Technique Breakdown** video
+uploader (see below). Form acknowledgment links to Terms of Service and
+Privacy Policy.
+
+**Technique Breakdown Upload**
+An optional video uploader built into the athlete signup form. Athletes can
+drop a clip of their event (up to 500 MB) for a chance to have D1 and elite
+competitors break it down on camera and feature it on Propare's socials.
+Videos upload directly to **Cloudflare Stream** through a Cloudflare Worker
+using the **tus resumable-upload** protocol — with a live progress bar,
+status messages, a remove/replace control, and resumable transfers that
+survive a dropped connection. Once uploaded, the resulting Stream video ID is
+attached to the form submission. A consent checkbox (required whenever a clip
+is attached) covers featuring the clip on social media, including guardian
+agreement for athletes under 18.
 
 **Coach Signup**
 Separate Netlify form for coach applications with its own email notification
@@ -73,6 +87,8 @@ social accounts.
 
 - Multi-file static site — HTML, Bebas Neue + Inter via Google Fonts
 - Netlify Forms with email notifications for athlete and coach submissions
+- Cloudflare Stream for athlete video uploads, via a Cloudflare Worker using
+  tus resumable uploads
 - Zapier for routing form data to Google Sheets (separate sheets per form)
 - Propare logo embedded as base64
 - Deployed via Netlify Drop
@@ -80,6 +96,8 @@ social accounts.
 ## Security
 
 - Honeypot field on both athlete and coach signup forms for bot filtering
+- Video uploads gated behind an explicit consent checkbox, with guardian
+  agreement required for users under 18
 - All form data routed through Netlify's infrastructure
 - No sensitive data stored client-side
 
