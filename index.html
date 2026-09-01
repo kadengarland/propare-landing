@@ -3519,6 +3519,7 @@
     .review-consent-pref { margin-top: 16px; align-items: flex-start; }
     .review-consent-pref span { font-size: 0.8rem; line-height: 1.4; color: rgba(255,255,255,0.6); }
     .review-consent-pref.error span { color: var(--color-error); }
+    #review-turnstile { margin-top: 16px; display: flex; justify-content: center; }
     /* hero technique-breakdown link */
     .hero-breakdown { text-align: center; margin-top: 20px; opacity: 0; transform: translateY(16px); animation: heroContentIn 0.6s var(--ease-out) 1.0s forwards; }
     .hero-breakdown-link { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.55); font-size: 14px; font-weight: 500; letter-spacing: 0.01em; cursor: pointer; transition: color 0.3s cubic-bezier(0.16,1,0.3,1); }
@@ -3528,7 +3529,8 @@
     @keyframes reviewPulse { 0% { box-shadow: 0 0 0 0 rgba(5,150,105,0.45); } 100% { box-shadow: 0 0 0 16px rgba(5,150,105,0); } }
     .review-block.pulse { animation: reviewPulse 1.3s ease-out 2; }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/tus-js-client@4/dist/tus.min.js"></script>
+  <!-- Turnstile is loaded explicit-render (see reviewUpload below), same as
+       repos/propare-frontend's signup page -- no auto-render script tag here. -->
 </head>
 <body>
   <canvas id="particleCanvas"></canvas>
@@ -4188,6 +4190,14 @@
                   <span>I'm OK with Propare featuring my clip and breakdown on social media. If under 18, a parent or guardian agrees too.</span>
                 </label>
                 <p class="form-error" id="review-consent-error">Please confirm you're OK with us featuring your clip, or remove the video.</p>
+
+                <!-- Rendered explicitly by reviewUpload below, same pattern as the
+                     TurnstileWidget in repos/propare-frontend's signup page: reuses
+                     that same "Propare Turnstile (Captcha)" widget/site key (Managed
+                     mode) rather than a second widget, so propare-backend's existing
+                     TURNSTILE_SECRET_KEY covers this form too -- proparesignup.com
+                     just needs to be added as an allowed hostname on that widget. -->
+                <div id="review-turnstile"></div>
 
                 <input type="hidden" name="review-video-id" id="review-video-id">
               </div>
@@ -5013,11 +5023,19 @@
 
           try {
             const formData = new FormData(form);
-            await fetch('/', {
+            const netlifySubmit = fetch('/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
               body: new URLSearchParams(formData).toString()
             });
+            // Structured metadata + the Azure blob reference, for the admin
+            // video-submissions inbox -- additive to the Netlify Forms
+            // submission above, not a replacement for it. Only fires when a
+            // video was actually attached and uploaded.
+            const confirmSubmit = window.reviewUpload && window.reviewUpload.hasVideo()
+              ? window.reviewUpload.confirmSubmission(form)
+              : Promise.resolve();
+            await Promise.all([netlifySubmit, confirmSubmit]);
 
             form.style.display = 'none';
             success.classList.add('show');
@@ -5412,19 +5430,123 @@
 
 </script>
   <script>
-  (function () {
-    var WORKER_URL = "https://propare-stream-upload.team-fab.workers.dev";
+  // Exposes window.reviewUpload for setupAthleteForm()'s submit handler to
+  // call at the actual form-submit moment (the /confirm PATCH below) --
+  // this IIFE owns the upload, that one owns the Netlify POST, and the two
+  // have to coordinate through one submission id.
+  window.reviewUpload = (function () {
+    // Submissions land in the same Azure Blob container the main platform's
+    // video-analysis tool already reads from, via propare-backend, instead
+    // of the old direct-to-Cloudflare-Stream path -- see the admin video
+    // submissions inbox in repos/propare-backend for the receiving end.
+    // propare-backend's own docs (docs/HANDOFF.md) don't document a custom
+    // domain for the API App Service, only APP_URL for the frontend at
+    // www.propareapp.com -- so this is the App Service's default hostname.
+    // Confirm with: az webapp show --name propare-api --resource-group
+    // propare-rg --query defaultHostName (or Azure Portal -> propare-api ->
+    // Overview -> Default domain) before this ships.
+    var BACKEND_URL = "https://propare-api.azurewebsites.net";
     var MAX_BYTES = 500 * 1024 * 1024;
+    // Same "Propare Turnstile (Captcha)" widget repos/propare-frontend's
+    // signup page uses (Managed mode) -- reused here rather than a second
+    // widget, so propare-backend's existing TURNSTILE_SECRET_KEY covers
+    // this form too. proparesignup.com has to be added as an allowed
+    // hostname on this widget in the Cloudflare dashboard for its tokens
+    // to verify.
+    var TURNSTILE_SITE_KEY = "0x4AAAAAACwggF6KJ-L9X2Mm";
 
     function ready(fn) {
       if (document.readyState !== "loading") fn();
       else document.addEventListener("DOMContentLoaded", fn);
     }
 
+    // Token arrives asynchronously via the widget's callback, any time after
+    // it renders -- not synchronously on demand the way a getResponse() call
+    // implies. Stashed here as soon as it's produced, read by whichever
+    // request needs it.
+    var turnstileToken = null;
+
+    // Explicit render, same as repos/propare-frontend's TurnstileWidget:
+    // load the API script with render=explicit, then render into the
+    // #review-turnstile container once it's ready.
+    function initTurnstile() {
+      var container = document.getElementById("review-turnstile");
+      if (!container) return;
+
+      function render() {
+        if (!window.turnstile) return;
+        window.turnstile.render(container, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: function (token) { turnstileToken = token; },
+          "expired-callback": function () { turnstileToken = null; },
+          theme: "dark",
+        });
+      }
+
+      if (!document.getElementById("cf-turnstile-script")) {
+        var script = document.createElement("script");
+        script.id = "cf-turnstile-script";
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onReviewTurnstileLoad";
+        script.async = true;
+        window.onReviewTurnstileLoad = render;
+        document.head.appendChild(script);
+      } else {
+        render();
+      }
+    }
+
+    // Falls back to a "dev-bypass" token when the widget hasn't produced one
+    // yet (not rendered, still pending, or no site key reachable locally) --
+    // harmless: propare-backend only accepts that prefix when
+    // ALLOW_CAPTCHA_BYPASS is set on its own end, same convention the rest
+    // of the platform's public forms use. In production this just means a
+    // request made before the widget resolves fails captcha verification
+    // with a clear error rather than silently succeeding.
+    function getCaptchaToken() {
+      return turnstileToken || "dev-bypass-review";
+    }
+
+    function xhrRequest(method, url, body, headers) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        Object.keys(headers || {}).forEach(function (k) { xhr.setRequestHeader(k, headers[k]); });
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) resolve(xhr);
+          else reject(new Error("Request failed: " + xhr.status));
+        };
+        xhr.onerror = function () { reject(new Error("Network error")); };
+        xhr.send(body);
+      });
+    }
+
+    function uploadWithProgress(url, file, onProgress) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", url);
+        xhr.setRequestHeader("x-ms-blob-type", "BlockBlob");
+        xhr.setRequestHeader("Content-Type", file.type || "video/mp4");
+        xhr.upload.onprogress = function (e) {
+          if (!e.lengthComputable) return;
+          onProgress(Math.round((e.loaded / e.total) * 100));
+        };
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) resolve();
+          else reject(new Error("Azure upload failed: " + xhr.status));
+        };
+        xhr.onerror = function () { reject(new Error("Upload network error")); };
+        xhr.send(file);
+      });
+    }
+
+    var state = { submissionId: null };
+
     ready(function () {
       var form = document.getElementById("athleteForm");
       var fileInput = document.getElementById("review-file");
-      if (!form || !fileInput || typeof tus === "undefined") return;
+      if (!form || !fileInput) return;
+
+      initTurnstile();
 
       var labelText = document.getElementById("review-file-label-text");
       var labelEl = document.getElementById("review-file-label");
@@ -5439,7 +5561,6 @@
       var consentErr = document.getElementById("review-consent-error");
 
       var uploadInProgress = false;
-      var currentUpload = null;
 
       function setStatus(msg, cls) {
         statusEl.textContent = msg || "";
@@ -5456,8 +5577,8 @@
       }
 
       function clearVideo() {
-        if (currentUpload) { try { currentUpload.abort(); } catch (e) {} currentUpload = null; }
         uploadInProgress = false;
+        state.submissionId = null;
         hiddenId.value = "";
         fileInput.value = "";
         labelText.textContent = "Choose a video";
@@ -5493,7 +5614,7 @@
         var file = fileInput.files && fileInput.files[0];
         if (!file) return;
 
-        if (currentUpload) { try { currentUpload.abort(); } catch (e) {} currentUpload = null; }
+        state.submissionId = null;
         hiddenId.value = "";
         hideConsentError();
 
@@ -5515,42 +5636,38 @@
         setStatus("Uploading...");
         uploadInProgress = true;
 
-        var videoId = "";
-        var upload = new tus.Upload(file, {
-          endpoint: WORKER_URL,
-          chunkSize: 52428800,
-          retryDelays: [0, 1000, 3000, 5000, 10000],
-          metadata: { name: file.name, filetype: file.type, maxDurationSeconds: "600" },
-          onAfterResponse: function (req, res) {
-            var id = res.getHeader("stream-media-id");
-            if (id) videoId = id;
-          },
-          onProgress: function (sent, total) {
-            var pct = Math.round((sent / total) * 100);
-            progFill.style.width = pct + "%";
-            progPct.textContent = pct + "%";
-          },
-          onSuccess: function () {
-            if (!videoId && upload.url) {
-              videoId = upload.url.split("?")[0].split("/").pop();
-            }
-            hiddenId.value = videoId || "";
+        xhrRequest(
+          "POST",
+          BACKEND_URL + "/api/video-submissions/upload-url",
+          JSON.stringify({
+            filename: file.name,
+            file_size_bytes: file.size,
+            mime_type: file.type,
+            captcha_token: getCaptchaToken(),
+          }),
+          { "Content-Type": "application/json" },
+        )
+          .then(function (xhr) {
+            var res = JSON.parse(xhr.responseText);
+            state.submissionId = res.submission_id;
+            return uploadWithProgress(res.upload_url, file, function (pct) {
+              progFill.style.width = pct + "%";
+              progPct.textContent = pct + "%";
+            });
+          })
+          .then(function () {
+            hiddenId.value = state.submissionId ? String(state.submissionId) : "";
             uploadInProgress = false;
-            currentUpload = null;
             progFill.style.width = "100%";
             progPct.textContent = "100%";
             setStatus("Video uploaded. It'll send with your form.", "ok");
-          },
-          onError: function (err) {
+          })
+          .catch(function (err) {
             uploadInProgress = false;
-            currentUpload = null;
+            state.submissionId = null;
             setStatus("Upload failed. Check your connection and pick the file again.", "err");
-            console.error("Stream upload error:", err);
-          }
-        });
-
-        currentUpload = upload;
-        upload.start();
+            console.error("Video submission upload error:", err);
+          });
       });
 
       // Runs before the site's own submit handler (capture phase).
@@ -5574,6 +5691,49 @@
         hideConsentError();
       }, true);
     });
+
+    // Called by setupAthleteForm()'s submit handler, alongside its
+    // unchanged Netlify POST -- see the comment there for why both run.
+    function confirmSubmission(form) {
+      if (!state.submissionId) return Promise.resolve();
+      var get = function (name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        return el ? el.value : "";
+      };
+      var checked = function (name) {
+        var el = form.querySelector('[name="' + name + '"]');
+        return !!(el && el.checked);
+      };
+      var body = {
+        first_name: get("first-name"),
+        last_name: get("last-name"),
+        email: get("email"),
+        phone: get("phone"),
+        is_adult: get("age-verification") === "yes",
+        guardian_name: get("guardian-name") || null,
+        guardian_email: get("guardian-email") || null,
+        guardian_phone: get("guardian-phone") || null,
+        sport: get("sport"),
+        contact_email: checked("contact-email"),
+        contact_text: checked("contact-text"),
+        contact_instagram: checked("contact-instagram"),
+        instagram_username: get("instagram-username") || null,
+        consent_to_feature: checked("review-consent"),
+        captcha_token: getCaptchaToken(),
+      };
+      return xhrRequest(
+        "PATCH",
+        BACKEND_URL + "/api/video-submissions/" + state.submissionId + "/confirm",
+        JSON.stringify(body),
+        { "Content-Type": "application/json" },
+      ).catch(function (err) {
+        // Best-effort: the Netlify Forms submission (the athlete's actual
+        // success path) must not be blocked by this call failing.
+        console.error("Video submission confirm failed:", err);
+      });
+    }
+
+    return { hasVideo: function () { return !!state.submissionId; }, confirmSubmission: confirmSubmission };
   })();
   </script>
 </body>
