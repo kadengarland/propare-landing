@@ -5469,6 +5469,9 @@
     // implies. Stashed here as soon as it's produced, read by whichever
     // request needs it.
     var turnstileToken = null;
+    // Kept so a later call can force the widget to mint a fresh token --
+    // see resetCaptchaForNextUse() below.
+    var turnstileContainerEl = null;
 
     // Explicit render, same as repos/propare-frontend's TurnstileWidget:
     // load the API script with render=explicit, then render into the
@@ -5476,6 +5479,7 @@
     function initTurnstile() {
       var container = document.getElementById("review-turnstile");
       if (!container) return;
+      turnstileContainerEl = container;
 
       function render() {
         if (!window.turnstile) return;
@@ -5508,6 +5512,23 @@
     // with a clear error rather than silently succeeding.
     function getCaptchaToken() {
       return turnstileToken || "dev-bypass-review";
+    }
+
+    // Turnstile tokens are single-use -- the backend verifies each one via
+    // Cloudflare's siteverify, which rejects a token it has already seen.
+    // upload-url and confirm each verify their own token (the backend
+    // treats confirm's check as the real, security-relevant one -- see its
+    // own comment -- upload-url's is defense in depth), so reusing the same
+    // cached token for both meant confirm always failed as a duplicate right
+    // after upload-url had already spent it. Called right after upload-url
+    // succeeds so a fresh token is either already sitting there or well on
+    // its way by the time the athlete finishes the rest of the form and
+    // hits submit. Harmless no-op if the widget never loaded (e.g. locally).
+    function resetCaptchaForNextUse() {
+      turnstileToken = null;
+      if (window.turnstile && turnstileContainerEl) {
+        window.turnstile.reset(turnstileContainerEl);
+      }
     }
 
     function xhrRequest(method, url, body, headers) {
@@ -5654,6 +5675,11 @@
           .then(function (xhr) {
             var res = JSON.parse(xhr.responseText);
             state.submissionId = res.submission_id;
+            // This request just spent the captcha token that was cached at
+            // the top of this handler -- get a fresh one lined up now so
+            // confirmSubmission() (fired on the form's actual submit,
+            // possibly minutes from now) doesn't inherit an already-used one.
+            resetCaptchaForNextUse();
             return uploadWithProgress(res.upload_url, file, function (pct) {
               progFill.style.width = pct + "%";
               progPct.textContent = pct + "%";
