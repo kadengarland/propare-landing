@@ -5442,10 +5442,14 @@
     // propare-backend's own docs (docs/HANDOFF.md) don't document a custom
     // domain for the API App Service, only APP_URL for the frontend at
     // www.propareapp.com -- so this is the App Service's default hostname.
-    // Confirm with: az webapp show --name propare-api --resource-group
-    // propare-rg --query defaultHostName (or Azure Portal -> propare-api ->
-    // Overview -> Default domain) before this ships.
-    var BACKEND_URL = "https://propare-api.azurewebsites.net";
+    // Confirmed via `az webapp show --name propare-api --resource-group
+    // propare-rg --query defaultHostName`: Azure auto-suffixed this app's
+    // hostname (the plain "propare-api.azurewebsites.net" name was already
+    // taken globally), so the clean name this constant previously guessed at
+    // was never a real host -- every upload from this page failed outright
+    // on DNS resolution until this was corrected. propare-frontend's own
+    // BACKEND_INTERNAL_URL app setting confirms this is the real one.
+    var BACKEND_URL = "https://propare-api-g5gchneza5a4hvb2.westus3-01.azurewebsites.net";
     var MAX_BYTES = 500 * 1024 * 1024;
     // Same "Propare Turnstile (Captcha)" widget repos/propare-frontend's
     // signup page uses (Managed mode) -- reused here rather than a second
